@@ -28,6 +28,8 @@ const HMR = helpers.hasProcessFlag('hot');
 const AOT = helpers.hasNpmFlag('aot');
 const METADATA = {
   title: 'Listem',
+  description: 'Website description.',
+  keywords: 'keyword1, keyword2, keyword3',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
 };
@@ -281,6 +283,8 @@ module.exports = function (options) {
       new HtmlWebpackPlugin({
         template: 'src/index.html',
         title: METADATA.title,
+        description: METADATA.description,
+        keywords: METADATA.keywords,
         chunksSortMode: 'dependency',
         metadata: METADATA,
         inject: 'head'
