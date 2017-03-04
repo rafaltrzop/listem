@@ -15,7 +15,8 @@
  */
 module.exports = {
   link: [
-    /** <link> tags for a fonts **/
+    /** <link> tags for fonts **/
+    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic' },
     { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' },
 
     /** <link> tags for 'apple-touch-icon' (AKA Web Clips). **/
