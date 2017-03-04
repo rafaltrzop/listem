@@ -25,12 +25,9 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
-import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
-import { XLargeDirective } from './home/x-large';
 
 import '../styles/styles.scss';
-import '../styles/headings.css';
 
 // Material 2
 import { MaterialModule } from '@angular/material';
@@ -55,10 +52,8 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
-    AboutComponent,
     HomeComponent,
     NoContentComponent,
-    XLargeDirective
   ],
   imports: [ // import Angular's modules
     BrowserModule,
