@@ -27,7 +27,7 @@ import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { NoContentComponent } from './no-content';
 
-import '../styles/styles.scss';
+import '../styles/main.scss';
 
 // Material 2
 import { MaterialModule } from '@angular/material';
