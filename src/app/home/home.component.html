@@ -1,1 +1,17 @@
-<h1>Hello world</h1>
+<md-toolbar color="primary">
+  <span>Listem</span>
+</md-toolbar>
+
+<br><br>
+
+<button md-raised-button>Log in</button>
+<button md-raised-button>Sign up</button>
+
+<br><br>
+
+<h1>Items list:</h1>
+<ul>
+  <li *ngFor="let item of items | async">
+    {{ item.$key + ' : ' + item.$value }}
+  </li>
+</ul>
