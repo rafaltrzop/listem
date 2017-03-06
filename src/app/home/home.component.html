@@ -1,17 +1,38 @@
 <md-toolbar color="primary">
-  <span>Listem</span>
+  <div class="container">
+    <span>Listem</span>
+  </div>
 </md-toolbar>
 
 <br><br>
 
-<button md-raised-button>Log in</button>
-<button md-raised-button>Sign up</button>
+<div class="container">
+  <form>
+    <div>
+      <md-input-container>
+        <input mdInput type="email" placeholder="E-mail">
+      </md-input-container>
+    </div>
 
-<br><br>
+    <div>
+      <md-input-container>
+        <input mdInput type="password" placeholder="Password">
+      </md-input-container>
+    </div>
 
-<h1>Items list:</h1>
-<ul>
-  <li *ngFor="let item of items | async">
-    {{ item.$key + ' : ' + item.$value }}
-  </li>
-</ul>
+    <br>
+
+    <div class="form__submit-container">
+      <button md-raised-button>Log in</button>
+      <button md-raised-button>Sign up</button>
+    </div>
+  </form>
+</div>
+
+<!--<br><br>-->
+<!--<h1>Items list:</h1>-->
+<!--<ul>-->
+  <!--<li *ngFor="let item of items | async">-->
+    <!--{{ item.$key + ' : ' + item.$value }}-->
+  <!--</li>-->
+<!--</ul>-->
