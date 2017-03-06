@@ -33,7 +33,7 @@ import '../styles/main.scss';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyA2kSH9OzzJVqB8c0Xn9LjtvqueSCHeHxI',
@@ -41,6 +41,11 @@ export const firebaseConfig = {
   databaseURL: 'https://listem-b9741.firebaseio.com',
   storageBucket: 'listem-b9741.appspot.com',
   messagingSenderId: '868658874373'
+};
+
+const firebaseAuthConfig = {
+  provider: AuthProviders.Password,
+  method: AuthMethods.Password
 };
 
 // Application wide providers
@@ -71,7 +76,7 @@ type StoreType = {
     HttpModule,
     RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules }),
     MaterialModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
