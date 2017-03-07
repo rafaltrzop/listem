@@ -7,32 +7,24 @@
 <br><br>
 
 <div class="container">
-  <form>
+  <form [formGroup]="form">
     <div>
       <md-input-container>
-        <input mdInput type="email" placeholder="E-mail">
+        <input mdInput type="email" placeholder="E-mail" formControlName="email">
       </md-input-container>
     </div>
 
     <div>
       <md-input-container>
-        <input mdInput type="password" placeholder="Password">
+        <input mdInput type="password" placeholder="Password" formControlName="password">
       </md-input-container>
     </div>
 
     <br>
 
     <div class="form__submit-container">
-      <button md-raised-button>Log in</button>
-      <button md-raised-button>Sign up</button>
+      <button md-raised-button (click)="logIn()">Log in</button>
+      <button md-raised-button (click)="signUp()">Sign up</button>
     </div>
   </form>
 </div>
-
-<!--<br><br>-->
-<!--<h1>Items list:</h1>-->
-<!--<ul>-->
-  <!--<li *ngFor="let item of items | async">-->
-    <!--{{ item.$key + ' : ' + item.$value }}-->
-  <!--</li>-->
-<!--</ul>-->
