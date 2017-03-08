@@ -23,12 +23,15 @@ export class HomeComponent implements OnInit {
     this.configureForm();
   }
 
-  // TODO
   public logIn() {
-    console.log('log in');
-    console.log('form: ', this.form);
-    console.log('form values: ', this.form.value);
-    console.log('form valid: ', this.form.valid);
+    const logIn = this.homeService.logIn(this.form.value.email, this.form.value.password);
+
+    logIn.then((data) => {
+      console.log('logged in', data); // TODO: handle success
+    }, (error) => {
+      this.errorMessage = error.message;
+      this.openSnackBar(this.errorMessage, 'OK');
+    });
   }
 
   public signUp() {

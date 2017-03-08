@@ -8,4 +8,8 @@ export class HomeService {
   public signUp(email: string, password: string) {
     return this.af.auth.createUser({ email, password });
   }
+
+  public logIn(email: string, password: string) {
+    return this.af.auth.login({ email, password });
+  }
 }
