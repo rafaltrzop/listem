@@ -23,8 +23,8 @@
     <br>
 
     <div class="form__submit-container">
-      <button md-raised-button (click)="logIn()">Log in</button>
-      <button md-raised-button (click)="signUp()">Sign up</button>
+      <button md-raised-button (click)="logIn()" [disabled]="form.invalid">Log in</button>
+      <button md-raised-button (click)="signUp()" [disabled]="form.invalid">Sign up</button>
     </div>
   </form>
 </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MdSnackBar } from '@angular/material';
+
 import { HomeService } from './home.service';
 
 @Component({
@@ -10,8 +12,12 @@ import { HomeService } from './home.service';
 })
 export class HomeComponent implements OnInit {
   public form: FormGroup;
+  private errorMessage: string;
 
-  constructor(private homeService: HomeService) { }
+  constructor(
+    private homeService: HomeService,
+    private snackBar: MdSnackBar
+  ) { }
 
   public ngOnInit() {
     this.configureForm();
@@ -20,8 +26,8 @@ export class HomeComponent implements OnInit {
   // TODO
   public logIn() {
     console.log('log in');
-    console.log(this.form);
-    console.log(this.form.value);
+    console.log('form: ', this.form);
+    console.log('form values: ', this.form.value);
     console.log('form valid: ', this.form.valid);
   }
 
@@ -31,20 +37,19 @@ export class HomeComponent implements OnInit {
     signUp.then((data) => {
       console.log('account created', data); // TODO: handle success
     }, (error) => {
-      let errorCode = error.code;
-      let errorMessage = error.message;
-
-      console.log(errorCode, errorMessage); // TODO: display message to the user
+      this.errorMessage = error.message;
+      this.openSnackBar(this.errorMessage, 'OK');
     });
   }
 
   private configureForm() {
     this.form = new FormGroup({
       email: new FormControl(null, Validators.required),
-      password: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(6)
-      ])
+      password: new FormControl(null, Validators.required)
     });
+  }
+
+  private openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action);
   }
 }
