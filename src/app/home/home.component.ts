@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MdSnackBar } from '@angular/material';
 
@@ -16,34 +17,42 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private homeService: HomeService,
-    private snackBar: MdSnackBar
+    private snackBar: MdSnackBar,
+    private router: Router
   ) { }
 
   public ngOnInit() {
     this.configureForm();
   }
 
-  public logIn() {
-    const logIn = this.homeService.logIn(this.form.value.email, this.form.value.password);
-
-    logIn.then((data) => {
-      console.log('logged in', data); // TODO: handle success
-    }, (error) => {
-      this.errorMessage = error.message;
-      this.openSnackBar(this.errorMessage, 'OK');
-    });
-  }
-
   public signUp() {
     const signUp = this.homeService.signUp(this.form.value.email, this.form.value.password);
 
     signUp.then((data) => {
-      console.log('account created', data); // TODO: handle success
+      console.log('account created', data); // TODO: remove
+      this.logIn();
     }, (error) => {
       this.errorMessage = error.message;
       this.openSnackBar(this.errorMessage, 'OK');
     });
   }
+
+  public logIn() {
+    const logIn = this.homeService.logIn(this.form.value.email, this.form.value.password);
+
+    logIn.then((data) => {
+      console.log('logged in', data); // TODO: remove
+      this.router.navigate(['lists']);
+    }, (error) => {
+      this.errorMessage = error.message;
+      this.openSnackBar(this.errorMessage, 'OK');
+    });
+  }
+
+  // public logOut() {
+  //   console.log('logged out');
+  //   this.homeService.logOut();
+  // }
 
   private configureForm() {
     this.form = new FormGroup({

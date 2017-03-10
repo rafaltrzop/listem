@@ -25,6 +25,7 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
+import { ListsComponent } from './lists';
 import { NoContentComponent } from './no-content';
 
 import '../styles/main.scss';
@@ -68,6 +69,7 @@ type StoreType = {
   declarations: [
     AppComponent,
     HomeComponent,
+    ListsComponent,
     NoContentComponent,
   ],
   imports: [ // import Angular's modules

@@ -12,4 +12,8 @@ export class HomeService {
   public logIn(email: string, password: string) {
     return this.af.auth.login({ email, password });
   }
+
+  public logOut() {
+    return this.af.auth.logout();
+  }
 }
