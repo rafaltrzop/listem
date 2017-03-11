@@ -6,7 +6,7 @@ import { FirebaseAuthState } from 'angularfire2';
 import { AuthService } from './core/service/auth.service';
 
 @Injectable()
-export class LoggedInGuard implements CanActivate {
+export class LoggedOutGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private router: Router
@@ -15,10 +15,10 @@ export class LoggedInGuard implements CanActivate {
   public canActivate(): Observable<boolean> {
     return Observable.create((observer) => {
       this.authService.auth.subscribe((state: FirebaseAuthState) => {
-        observer.next(state !== null);
+        observer.next(state === null);
         observer.complete();
-        if (state === null) {
-          this.router.navigate(['']);
+        if (state !== null) {
+          this.router.navigate(['lists']);
         }
       });
     });

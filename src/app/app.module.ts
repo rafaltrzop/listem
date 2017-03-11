@@ -27,6 +27,7 @@ import { AppState, InternalStateType } from './app.service';
 
 import { CoreModule } from './core/core.module';
 import { LoggedInGuard } from './logged-in-guard.service';
+import { LoggedOutGuard } from './logged-out-guard.service';
 import { HomeComponent } from './home';
 import { ListsComponent } from './lists';
 import { NoContentComponent } from './no-content';
@@ -56,7 +57,8 @@ const firebaseAuthConfig = {
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
-  LoggedInGuard
+  LoggedInGuard,
+  LoggedOutGuard
 ];
 
 type StoreType = {
