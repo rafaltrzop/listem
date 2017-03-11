@@ -26,7 +26,7 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 
 import { CoreModule } from './core/core.module';
-import { AuthGuard } from './auth-guard.service';
+import { LoggedInGuard } from './logged-in-guard.service';
 import { HomeComponent } from './home';
 import { ListsComponent } from './lists';
 import { NoContentComponent } from './no-content';
@@ -55,7 +55,8 @@ const firebaseAuthConfig = {
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
-  AppState
+  AppState,
+  LoggedInGuard
 ];
 
 type StoreType = {
@@ -87,8 +88,7 @@ type StoreType = {
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS,
-    AuthGuard
+    APP_PROVIDERS
   ]
 })
 export class AppModule {

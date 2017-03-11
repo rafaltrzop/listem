@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { AuthGuard } from './auth-guard.service';
+import { LoggedInGuard } from './logged-in-guard.service';
 import { HomeComponent } from './home';
 import { ListsComponent } from './lists';
 import { NoContentComponent } from './no-content';
@@ -15,7 +15,7 @@ export const ROUTES: Routes = [
   {
     path: 'lists',
     component: ListsComponent,
-    canActivate: [ AuthGuard ]
+    canActivate: [ LoggedInGuard ]
   },
   {
     path: '**',
