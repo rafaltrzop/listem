@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit {
     const signUp = this.authService.signUp(this.form.value.email, this.form.value.password);
 
     signUp.then((data) => {
-      console.log('account created', data); // TODO: remove
       this.logIn();
     }, (error) => {
       this.errorMessage = error.message;
@@ -41,18 +40,12 @@ export class HomeComponent implements OnInit {
     const logIn = this.authService.logIn(this.form.value.email, this.form.value.password);
 
     logIn.then((data) => {
-      console.log('logged in', data); // TODO: remove
       this.router.navigate(['lists']);
     }, (error) => {
       this.errorMessage = error.message;
       this.openSnackBar(this.errorMessage, 'OK');
     });
   }
-
-  // public logOut() {
-  //   console.log('logged out');
-  //   this.homeService.logOut();
-  // }
 
   private configureForm() {
     this.form = new FormGroup({
