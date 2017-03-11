@@ -24,6 +24,8 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
+
+import { AuthGuard } from './auth-guard.service';
 import { HomeComponent } from './home';
 import { ListsComponent } from './lists';
 import { NoContentComponent } from './no-content';
@@ -83,7 +85,8 @@ type StoreType = {
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    AuthGuard
   ]
 })
 export class AppModule {
