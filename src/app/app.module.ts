@@ -25,6 +25,7 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 
+import { CoreModule } from './core/core.module';
 import { AuthGuard } from './auth-guard.service';
 import { HomeComponent } from './home';
 import { ListsComponent } from './lists';
@@ -80,8 +81,9 @@ type StoreType = {
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules }),
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     MaterialModule,
-    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
+    CoreModule.forRoot()
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

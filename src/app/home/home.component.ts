@@ -3,20 +3,20 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MdSnackBar } from '@angular/material';
 
-import { HomeService } from './home.service';
+import { AuthService } from '../core/service/auth.service';
 
 @Component({
   selector: 'home',
   styleUrls: [ './home.component.css' ],
   templateUrl: './home.component.html',
-  providers: [ HomeService ]
+  providers: [ AuthService ]
 })
 export class HomeComponent implements OnInit {
   public form: FormGroup;
   private errorMessage: string;
 
   constructor(
-    private homeService: HomeService,
+    private authService: AuthService,
     private snackBar: MdSnackBar,
     private router: Router
   ) { }
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
   public signUp() {
-    const signUp = this.homeService.signUp(this.form.value.email, this.form.value.password);
+    const signUp = this.authService.signUp(this.form.value.email, this.form.value.password);
 
     signUp.then((data) => {
       console.log('account created', data); // TODO: remove
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
   }
 
   public logIn() {
-    const logIn = this.homeService.logIn(this.form.value.email, this.form.value.password);
+    const logIn = this.authService.logIn(this.form.value.email, this.form.value.password);
 
     logIn.then((data) => {
       console.log('logged in', data); // TODO: remove
