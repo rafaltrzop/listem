@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, AngularFireAuth, FirebaseAuthState } from 'angularfire2';
+import * as firebase from 'firebase';
 
 @Injectable()
 export class AuthService {
@@ -24,5 +25,17 @@ export class AuthService {
 
   public logOut() {
     return this.af.auth.logout();
+  }
+
+  // TODO: add snackbar messages
+  public resetPassword(email: string) {
+    let auth = firebase.auth();
+
+    auth.sendPasswordResetEmail(email).then(() => {
+      console.log('email sent');
+    }, (error) => {
+      console.log('enail not sent', error);
+      console.log(error.message);
+    });
   }
 }

@@ -7,7 +7,7 @@ import { AuthService } from '../core/service/auth.service';
 
 @Component({
   selector: 'home',
-  styleUrls: [ './home.component.css' ],
+  styleUrls: [ './home.component.scss' ],
   templateUrl: './home.component.html',
   providers: [ AuthService ]
 })
@@ -45,6 +45,10 @@ export class HomeComponent implements OnInit {
       this.errorMessage = error.message;
       this.openSnackBar(this.errorMessage, 'OK');
     });
+  }
+
+  public resetPassword() {
+    this.authService.resetPassword(this.form.value.email);
   }
 
   private configureForm() {

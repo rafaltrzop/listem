@@ -1,0 +1,33 @@
+md-toolbar {
+  margin-bottom: 30px;
+
+  a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, .87);
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  &__submit-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    margin-bottom: 30px;
+  }
+
+  &__reset-password {
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    color: rgba(0, 0, 0, .38);
+    transition: color .3s;
+    &:hover {
+      color: #673ab7;
+    }
+  }
+}

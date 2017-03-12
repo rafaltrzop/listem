@@ -1,9 +1,0 @@
-.container {
-  display: flex;
-  justify-content: center;
-}
-
-.form__submit-container {
-  display: flex;
-  justify-content: space-between;
-}
