@@ -8,7 +8,7 @@ export class AuthService {
 
   constructor(
     public af: AngularFire,
-    public auth: AngularFireAuth,
+    public auth: AngularFireAuth
   ) {
     auth.subscribe((state: FirebaseAuthState) => {
       this.authState = state;
@@ -27,15 +27,8 @@ export class AuthService {
     return this.af.auth.logout();
   }
 
-  // TODO: add snackbar messages
   public resetPassword(email: string) {
-    let auth = firebase.auth();
-
-    auth.sendPasswordResetEmail(email).then(() => {
-      console.log('email sent');
-    }, (error) => {
-      console.log('enail not sent', error);
-      console.log(error.message);
-    });
+    const auth = firebase.auth();
+    return auth.sendPasswordResetEmail(email);
   }
 }

@@ -13,7 +13,6 @@ import { AuthService } from '../core/service/auth.service';
 })
 export class HomeComponent implements OnInit {
   public form: FormGroup;
-  private errorMessage: string;
 
   constructor(
     private authService: AuthService,
@@ -31,8 +30,7 @@ export class HomeComponent implements OnInit {
     signUp.then((data) => {
       this.logIn();
     }, (error) => {
-      this.errorMessage = error.message;
-      this.openSnackBar(this.errorMessage, 'OK');
+      this.openSnackBar(error.message, 'OK');
     });
   }
 
@@ -42,13 +40,16 @@ export class HomeComponent implements OnInit {
     logIn.then((data) => {
       this.router.navigate(['lists']);
     }, (error) => {
-      this.errorMessage = error.message;
-      this.openSnackBar(this.errorMessage, 'OK');
+      this.openSnackBar(error.message, 'OK');
     });
   }
 
   public resetPassword() {
-    this.authService.resetPassword(this.form.value.email);
+    this.authService.resetPassword(this.form.value.email).then(() => {
+      this.openSnackBar('Check your email inbox', 'OK');
+    }, (error) => {
+      this.openSnackBar(error.message, 'OK');
+    });
   }
 
   private configureForm() {
@@ -59,6 +60,8 @@ export class HomeComponent implements OnInit {
   }
 
   private openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action);
+    this.snackBar.open(message, action, {
+      duration: 10000
+    });
   }
 }
