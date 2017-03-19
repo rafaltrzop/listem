@@ -6,7 +6,6 @@ export type InternalStateType = {
 
 @Injectable()
 export class AppState {
-
   public _state: InternalStateType = { };
 
   // already return a clone of the current state

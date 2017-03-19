@@ -25,22 +25,18 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 
-import { CoreModule } from './core/core.module';
+import { CoreModule } from './core';
+import { SharedModule } from './shared';
+import { ListsModule } from './lists';
 import { LoggedInGuard } from './logged-in-guard.service';
 import { LoggedOutGuard } from './logged-out-guard.service';
 import { HomeComponent } from './home';
-import { ListsComponent } from './lists';
 import { TrashComponent } from './trash';
 import { NoContentComponent } from './no-content';
 
 import '../styles/main.scss';
 
-// Material 2
-import { MaterialModule } from '@angular/material';
-import 'hammerjs';
-
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
-
 export const firebaseConfig = {
   apiKey: 'AIzaSyA2kSH9OzzJVqB8c0Xn9LjtvqueSCHeHxI',
   authDomain: 'listem-b9741.firebaseapp.com',
@@ -48,7 +44,6 @@ export const firebaseConfig = {
   storageBucket: 'listem-b9741.appspot.com',
   messagingSenderId: '868658874373'
 };
-
 const firebaseAuthConfig = {
   provider: AuthProviders.Password,
   method: AuthMethods.Password
@@ -76,7 +71,6 @@ type StoreType = {
   declarations: [
     AppComponent,
     HomeComponent,
-    ListsComponent,
     TrashComponent,
     NoContentComponent,
   ],
@@ -87,8 +81,9 @@ type StoreType = {
     HttpModule,
     RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules }),
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
-    MaterialModule,
-    CoreModule.forRoot()
+    CoreModule.forRoot(),
+    SharedModule,
+    ListsModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
@@ -96,7 +91,6 @@ type StoreType = {
   ]
 })
 export class AppModule {
-
   constructor(
     public appRef: ApplicationRef,
     public appState: AppState
@@ -138,5 +132,4 @@ export class AppModule {
     store.disposeOldHosts();
     delete store.disposeOldHosts;
   }
-
 }

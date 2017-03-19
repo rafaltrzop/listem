@@ -3,7 +3,7 @@ import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { FirebaseAuthState } from 'angularfire2';
 
-import { AuthService } from './core/service/auth.service';
+import { AuthService } from './core';
 
 @Injectable()
 export class LoggedOutGuard implements CanActivate {
