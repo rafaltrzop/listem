@@ -30,6 +30,7 @@ import { LoggedInGuard } from './logged-in-guard.service';
 import { LoggedOutGuard } from './logged-out-guard.service';
 import { HomeComponent } from './home';
 import { ListsComponent } from './lists';
+import { TrashComponent } from './trash';
 import { NoContentComponent } from './no-content';
 
 import '../styles/main.scss';
@@ -76,6 +77,7 @@ type StoreType = {
     AppComponent,
     HomeComponent,
     ListsComponent,
+    TrashComponent,
     NoContentComponent,
   ],
   imports: [ // import Angular's modules

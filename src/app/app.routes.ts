@@ -4,6 +4,7 @@ import { LoggedInGuard } from './logged-in-guard.service';
 import { LoggedOutGuard } from './logged-out-guard.service';
 import { HomeComponent } from './home';
 import { ListsComponent } from './lists';
+import { TrashComponent } from './trash';
 import { NoContentComponent } from './no-content';
 
 import { DataResolver } from './app.resolver';
@@ -17,6 +18,11 @@ export const ROUTES: Routes = [
   {
     path: 'lists',
     component: ListsComponent,
+    canActivate: [ LoggedInGuard ]
+  },
+  {
+    path: 'trash',
+    component: TrashComponent,
     canActivate: [ LoggedInGuard ]
   },
   {
