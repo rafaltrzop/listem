@@ -1,5 +1,43 @@
 <le-header></le-header>
 
 <div class="container">
-  <h1>Lists</h1>
+
+
+  <h1>Add new list</h1>
+  <form [formGroup]="addListForm" (submit)="addList()">
+    <md-input-container>
+      <input mdInput type="text" placeholder="List name" formControlName="name">
+    </md-input-container>
+
+    <button md-raised-button type="submit">Add list</button>
+  </form>
+
+  <h1>Your lists</h1>
+  <ul>
+    <template ngFor let-list [ngForOf]="userLists">
+      <li *ngIf="!(list | async)?.softDeleted">
+        {{ (list | async)?.name }}
+        {{ (list | async)?.$key }}
+        {{ list | async | json }}
+      </li>
+    </template>
+  </ul>
+
+  <h1>All lists</h1>
+  <ul>
+    <li *ngFor="let list of lists | async">
+      {{ list.name }}
+      <br>
+      {{ list | json }}
+    </li>
+  </ul>
+
+  <h1>Lists per user</h1>
+  <ul>
+    <li *ngFor="let x of listsPerUser | async">
+      {{ x.$key | json }}
+    </li>
+  </ul>
+
+
 </div>

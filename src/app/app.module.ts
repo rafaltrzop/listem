@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {
   NgModule,
@@ -77,7 +77,6 @@ type StoreType = {
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules }),
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
