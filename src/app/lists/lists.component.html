@@ -11,14 +11,36 @@
   </form>
 
   <h1>Your lists</h1>
-  <ul>
-    <template ngFor let-list [ngForOf]="userLists">
-      <li *ngIf="!(list | async)?.softDeleted">
-        {{ (list | async)?.name }}
-        <br>
-        {{ (list | async)?.$key }}
-        {{ list | async | json }}
-      </li>
-    </template>
-  </ul>
+  <template ngFor let-list [ngForOf]="userLists">
+    <md-card *ngIf="!(list | async)?.softDeleted" [routerLink]="['/lists', (list | async)?.$key]">
+      <span>{{ (list | async)?.name }}</span>
+
+
+      <span class="spacer"></span>
+
+      <!--<button md-icon-button>-->
+      <!--<md-icon>create</md-icon>-->
+      <!--</button>-->
+
+      <!--<button md-icon-button>-->
+      <!--<md-icon>clear</md-icon>-->
+      <!--</button>-->
+
+      <button md-icon-button [mdMenuTriggerFor]="menu">
+        <md-icon>more_vert</md-icon>
+      </button>
+      <md-menu #menu="mdMenu">
+        <button md-menu-item>
+          <md-icon>create</md-icon>
+          <span>Change name</span>
+        </button>
+        <button md-menu-item>
+          <md-icon>delete</md-icon>
+          <span>Remove list</span>
+        </button>
+      </md-menu>
+
+
+    </md-card>
+  </template>
 </div>

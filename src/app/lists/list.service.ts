@@ -24,7 +24,7 @@ export class ListService {
         snapshots.forEach((snapshot) => {
           userListIds.push(snapshot.key);
         });
-        observer.next(this.getUserLists(userListIds));
+        observer.next(this.getUserLists(userListIds.reverse()));
       });
     });
   }

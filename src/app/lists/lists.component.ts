@@ -8,7 +8,7 @@ import { List } from './list.model';
 
 @Component({
   selector: 'lists',
-  styleUrls: [ './lists.component.css' ],
+  styleUrls: [ './lists.component.scss' ],
   templateUrl: './lists.component.html',
 })
 export class ListsComponent implements OnInit {
