@@ -3,6 +3,7 @@ import { AngularFire } from 'angularfire2';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { AuthService } from '../core';
+import { ListService } from './list.service';
 import { List } from './list.model';
 
 @Component({
@@ -12,19 +13,22 @@ import { List } from './list.model';
 })
 export class ListsComponent implements OnInit {
   public addListForm: FormGroup;
-  private userId = this.authService.userId;
+  private userId = this.authService.userId; // TODO: remove
   private lists = this.af.database.list('/lists');
   private listsPerUser = this.af.database.list('/listsPerUser/' + this.userId);
   private userLists = [];
 
   constructor(
     private af: AngularFire,
-    private authService: AuthService
+    private authService: AuthService,
+    private listService: ListService
   ) { }
 
   public ngOnInit() {
     this.configureForm();
-    this.observeUserLists();
+    this.listService.observeUserLists().subscribe((userLists) => {
+      this.userLists = userLists;
+    });
   }
 
   public addList() {
@@ -36,27 +40,5 @@ export class ListsComponent implements OnInit {
     this.addListForm = new FormGroup({
       name: new FormControl(null, Validators.required)
     });
-  }
-
-  private observeUserLists() {
-    let listsPerUser = this.af.database.list(
-      '/listsPerUser/' + this.userId,
-      { preserveSnapshot: true }
-    );
-    listsPerUser.subscribe((snapshots) => {
-      let userListIds = [];
-      snapshots.forEach((snapshot) => {
-        userListIds.push(snapshot.key);
-      });
-      this.loadUserLists(userListIds);
-    });
-  }
-
-  private loadUserLists(userListIds) {
-    this.userLists = [];
-    for (let listId of userListIds) {
-      let list = this.af.database.object('/lists/' + listId);
-      this.userLists.push(list);
-    }
   }
 }
