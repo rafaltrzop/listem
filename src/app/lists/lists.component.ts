@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFire } from 'angularfire2';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
+import { AuthService } from '../core';
 import { List } from './list.model';
 
 @Component({
@@ -11,12 +12,15 @@ import { List } from './list.model';
 })
 export class ListsComponent implements OnInit {
   public addListForm: FormGroup;
-  private userId = this.af.auth.getAuth().uid;
+  private userId = this.authService.authState.uid;
   private lists = this.af.database.list('/lists');
   private listsPerUser = this.af.database.list('/listsPerUser/' + this.userId);
   private userLists = [];
 
-  constructor(private af: AngularFire) { }
+  constructor(
+    private af: AngularFire,
+    private authService: AuthService
+  ) { }
 
   public ngOnInit() {
     this.configureForm();
