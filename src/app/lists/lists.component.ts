@@ -12,7 +12,7 @@ import { List } from './list.model';
 })
 export class ListsComponent implements OnInit {
   public addListForm: FormGroup;
-  private userId = this.authService.authState.uid;
+  private userId = this.authService.userId;
   private lists = this.af.database.list('/lists');
   private listsPerUser = this.af.database.list('/listsPerUser/' + this.userId);
   private userLists = [];

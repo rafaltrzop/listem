@@ -31,4 +31,8 @@ export class AuthService {
     const auth = firebase.auth();
     return auth.sendPasswordResetEmail(email);
   }
+
+  get userId() {
+    return this.authState.uid;
+  }
 }
