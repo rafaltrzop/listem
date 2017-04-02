@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire } from 'angularfire2';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { AuthService } from '../core';
 import { ListService } from './list.service';
 
 @Component({
@@ -12,12 +10,9 @@ import { ListService } from './list.service';
 })
 export class ListsComponent implements OnInit {
   public addListForm: FormGroup;
-  private userId = this.authService.userId;
   private userLists = [];
 
   constructor(
-    private af: AngularFire,
-    private authService: AuthService,
     private listService: ListService
   ) { }
 
@@ -33,12 +28,8 @@ export class ListsComponent implements OnInit {
     this.addListForm.reset();
   }
 
-  public removeList(listId) {
-    // this.listService.removeList();
-    this.af.database.object('/lists/' + listId).remove();
-    this.af.database.object('/listsPerUser/' + this.userId + '/' + listId).remove();
-
-    console.log('remove list method');
+  public removeList(listId: string) {
+    this.listService.removeList(listId);
   }
 
   private configureForm() {

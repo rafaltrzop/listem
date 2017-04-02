@@ -24,6 +24,17 @@ export class ListService {
     this.af.database.object('/').$ref.update(updateObject);
   }
 
+  public removeList(listId: string) {
+    this.af.database.object(`/usersPerList/${listId}`).$ref.once('value').then((userPerList) => {
+      const userIds = Object.keys(userPerList.val());
+      for (let userId of userIds) {
+        this.af.database.object(`/listsPerUser/${userId}/${listId}`).remove();
+      }
+      this.af.database.object(`/usersPerList/${listId}`).remove();
+      this.af.database.object(`/lists/${listId}`).remove();
+    });
+  }
+
   public observeUserLists() {
     return Observable.create((observer) => {
       let listsPerUser = this.af.database.list(
