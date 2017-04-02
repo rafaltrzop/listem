@@ -3,15 +3,22 @@ import { AngularFire } from 'angularfire2';
 import { Observable } from 'rxjs/Observable';
 
 import { AuthService } from '../core';
+import { List } from './list.model';
 
 @Injectable()
 export class ListService {
   private userId = this.authService.userId;
+  private lists = this.af.database.list('/lists');
 
   constructor(
     private af: AngularFire,
     private authService: AuthService
   ) { }
+
+  public addList(name: string) {
+    const listKey = this.lists.push(new List(name)).key;
+    this.af.database.object('/listsPerUser/' + this.userId).update({[listKey]: true});
+  }
 
   public observeUserLists() {
     return Observable.create((observer) => {

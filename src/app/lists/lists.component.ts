@@ -4,7 +4,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { AuthService } from '../core';
 import { ListService } from './list.service';
-import { List } from './list.model';
 
 @Component({
   selector: 'lists',
@@ -14,7 +13,6 @@ import { List } from './list.model';
 export class ListsComponent implements OnInit {
   public addListForm: FormGroup;
   private userId = this.authService.userId;
-  private lists = this.af.database.list('/lists');
   private userLists = [];
 
   constructor(
@@ -30,9 +28,16 @@ export class ListsComponent implements OnInit {
     });
   }
 
-  public addList() {
-    const listKey = this.lists.push(new List(this.addListForm.value.name)).key;
-    this.af.database.object('/listsPerUser/' + this.userId).update({[listKey]: true});
+  public addList(name: string) {
+    this.listService.addList(name);
+  }
+
+  public removeList(listId) {
+    // this.listService.removeList();
+    this.af.database.object('/lists/' + listId).remove();
+    this.af.database.object('/listsPerUser/' + this.userId + '/' + listId).remove();
+
+    console.log('remove list method');
   }
 
   private configureForm() {

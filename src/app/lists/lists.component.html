@@ -2,7 +2,7 @@
 
 <div class="container">
   <h1>Add new list</h1>
-  <form [formGroup]="addListForm" (submit)="addList()">
+  <form [formGroup]="addListForm" (submit)="addList(addListForm.value.name)">
     <md-input-container>
       <input mdInput type="text" placeholder="List name" formControlName="name">
     </md-input-container>
@@ -12,7 +12,8 @@
 
   <h1>Your lists</h1>
   <template ngFor let-list [ngForOf]="userLists">
-    <md-card *ngIf="!(list | async)?.softDeleted" [routerLink]="['/lists', (list | async)?.$key]">
+    <md-card *ngIf="!(list | async)?.softDeleted">
+    <!--<md-card *ngIf="!(list | async)?.softDeleted" [routerLink]="['/lists', (list | async)?.$key]">-->
       <span>{{ (list | async)?.name }}</span>
 
 
@@ -34,7 +35,7 @@
           <md-icon>create</md-icon>
           <span>Change name</span>
         </button>
-        <button md-menu-item>
+        <button md-menu-item (click)="removeList('_list_id_2')">
           <md-icon>delete</md-icon>
           <span>Remove list</span>
         </button>
