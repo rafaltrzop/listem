@@ -1,24 +1,25 @@
 <md-toolbar color="primary">
-  <div class="container">
+  <header class="container">
     <!--<a [routerLink]="['']">Listem</a>-->
 
-
-    <button md-button [routerLink]="['/lists']">
-      <md-icon>format_list_bulleted</md-icon>
-      Lists
-    </button>
-    <!--<button md-button [routerLink]="['/settings']">-->
+    <nav>
+      <button md-button [routerLink]="['/lists']">
+        <md-icon>format_list_bulleted</md-icon>
+        Lists
+      </button>
+      <!--<button md-button [routerLink]="['/settings']">-->
       <!--<md-icon>settings</md-icon>-->
       <!--Settings-->
-    <!--</button>-->
-    <button md-button [routerLink]="['/trash']">
-      <md-icon>delete</md-icon>
-      Trash
-    </button>
-    <!--<button md-button>-->
-      <!--<md-icon>power_settings_new</md-icon>-->
-      <!--Log out-->
-    <!--</button>-->
+      <!--</button>-->
+      <button md-button [routerLink]="['/trash']">
+        <md-icon>delete</md-icon>
+        Trash
+      </button>
+      <button md-button (click)="logOut()">
+        <md-icon>power_settings_new</md-icon>
+        Log out
+      </button>
+    </nav>
 
 
     <!--<div style="float: right">-->
@@ -42,5 +43,5 @@
     <!--</div>-->
 
 
-  </div>
+  </header>
 </md-toolbar>

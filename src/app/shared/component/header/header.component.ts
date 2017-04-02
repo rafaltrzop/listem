@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-// import { AuthService } from '../core/service/auth.service';
+import { AuthService } from '../../../core';
 
 @Component({
   selector: 'le-header',
@@ -8,12 +9,14 @@ import { Component } from '@angular/core';
   templateUrl: './header.component.html',
 })
 export class HeaderComponent {
-  // constructor(
-  //   public authService: AuthService
-  // ) { }
+  constructor(
+    private router: Router,
+    public authService: AuthService
+  ) { }
 
-  // public logOut() {
-  //   this.authService.logOut();
-  //   this.router.navigate(['']);
-  // }
+  public logOut() {
+    this.authService.logOut().then(() => {
+      this.router.navigate(['']);
+    });
+  }
 }
