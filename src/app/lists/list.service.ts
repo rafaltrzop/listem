@@ -24,6 +24,10 @@ export class ListService {
     this.af.database.object('/').$ref.update(updateObject);
   }
 
+  public softDeleteList(listId: string) {
+    this.af.database.object(`/lists/${listId}`).update({ softDeleted: true });
+  }
+
   public removeList(listId: string) {
     this.af.database.object(`/usersPerList/${listId}`).$ref.once('value').then((userPerList) => {
       const userIds = Object.keys(userPerList.val());

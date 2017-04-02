@@ -34,8 +34,12 @@
           <md-icon>create</md-icon>
           <span>Change name</span>
         </button>
-        <button md-menu-item (click)="removeList(list)">
+        <button md-menu-item (click)="softDeleteList(list)">
           <md-icon>delete</md-icon>
+          <span>Move to trash</span>
+        </button>
+        <button md-menu-item (click)="removeList(list)">
+          <md-icon>clear</md-icon>
           <span>Remove list</span>
         </button>
       </md-menu>

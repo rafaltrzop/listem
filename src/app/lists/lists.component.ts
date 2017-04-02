@@ -28,6 +28,11 @@ export class ListsComponent implements OnInit {
     this.addListForm.reset();
   }
 
+  public softDeleteList(list) {
+    const listId = list.$ref.key;
+    this.listService.softDeleteList(listId);
+  }
+
   public removeList(list) {
     const listId = list.$ref.key;
     this.listService.removeList(listId);
