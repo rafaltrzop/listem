@@ -2,7 +2,7 @@
 
 <div class="container">
   <h1>Add new list</h1>
-  <form [formGroup]="addListForm" (submit)="addList(addListForm.value.name)">
+  <form [formGroup]="addListForm" (submit)="addList()">
     <md-input-container>
       <input mdInput type="text" placeholder="List name" formControlName="name">
     </md-input-container>

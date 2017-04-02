@@ -28,8 +28,9 @@ export class ListsComponent implements OnInit {
     });
   }
 
-  public addList(name: string) {
-    this.listService.addList(name);
+  public addList() {
+    this.listService.addList(this.addListForm.value.name);
+    this.addListForm.reset();
   }
 
   public removeList(listId) {
