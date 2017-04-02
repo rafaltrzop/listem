@@ -28,7 +28,8 @@ export class ListsComponent implements OnInit {
     this.addListForm.reset();
   }
 
-  public removeList(listId: string) {
+  public removeList(list) {
+    const listId = list.$ref.key;
     this.listService.removeList(listId);
   }
 

@@ -16,7 +16,6 @@
     <!--<md-card *ngIf="!(list | async)?.softDeleted" [routerLink]="['/lists', (list | async)?.$key]">-->
       <span>{{ (list | async)?.name }}</span>
 
-
       <span class="spacer"></span>
 
       <!--<button md-icon-button>-->
@@ -35,12 +34,11 @@
           <md-icon>create</md-icon>
           <span>Change name</span>
         </button>
-        <button md-menu-item (click)="removeList('_list_id_2')">
+        <button md-menu-item (click)="removeList(list)">
           <md-icon>delete</md-icon>
           <span>Remove list</span>
         </button>
       </md-menu>
-
 
     </md-card>
   </template>
