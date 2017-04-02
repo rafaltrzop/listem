@@ -55,7 +55,7 @@ export class ListService {
   private getUserLists(userListIds) {
     let userLists = [];
     for (let listId of userListIds) {
-      let list = this.af.database.object('/lists/' + listId);
+      let list = this.af.database.object(`/lists/${listId}`);
       userLists.push(list);
     }
     return userLists;
