@@ -32,6 +32,7 @@ export class ListService {
       }
       this.af.database.object(`/usersPerList/${listId}`).remove();
       this.af.database.object(`/lists/${listId}`).remove();
+      this.af.database.object(`/listItems/${listId}`).remove();
     });
   }
 
