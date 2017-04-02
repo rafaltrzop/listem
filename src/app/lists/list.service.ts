@@ -17,8 +17,11 @@ export class ListService {
 
   public addList(name: string) {
     const listKey = this.lists.push(new List(name)).key;
-    this.af.database.object('/listsPerUser/' + this.userId).update({[listKey]: true});
-    this.af.database.object('/usersPerList/' + listKey).update({[this.userId]: true});
+    const updateObject = {
+      [`/listsPerUser/${this.userId}/${listKey}`]: true,
+      [`/usersPerList/${listKey}/${this.userId}`]: true
+    };
+    this.af.database.object('/').$ref.update(updateObject);
   }
 
   public observeUserLists() {
