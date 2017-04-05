@@ -1,8 +1,4 @@
-// Material 2
-
 @import '~@angular/material/core/theming/all-theme';
-
-// NOTE: Theming is currently experimental and not yet publicly released!
 
 @include mat-core();
 
@@ -13,16 +9,6 @@ $theme: mat-light-theme($primary, $accent);
 
 @include angular-material-theme($theme);
 
-.m2app-dark {
-  $dark-primary: mat-palette($mat-pink, 700, 500, 900);
-  $dark-accent:  mat-palette($mat-blue-grey, A200, A100, A400);
-  $dark-warn:    mat-palette($mat-deep-orange);
-
-  $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
-
-  @include angular-material-theme($dark-theme);
-}
-
 body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 
@@ -31,36 +17,5 @@ body {
   * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-
-  mat-sidenav {
-    min-width: 15%;
-
-    [mat-button] {
-      width: 100%;
-      position: relative;
-      bottom: 0;
-      margin: 24px 0;
-    }
-  }
-
-  .demo-content {
-    padding: 32px;
-  }
-
-  mat-toolbar {
-    mat-icon {
-      cursor: pointer;
-    }
-
-    .demo-toolbar {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-    }
-  }
-
-  h1 {
-    font-size: 20px;
   }
 }

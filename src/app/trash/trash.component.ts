@@ -1,21 +1,22 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
-import { AuthService } from '../core/service/auth.service';
+import { ListService } from '../lists/list.service';
 
 @Component({
   selector: 'trash',
   styleUrls: [ './trash.component.css' ],
   templateUrl: './trash.component.html',
 })
-export class TrashComponent {
+export class TrashComponent implements OnInit {
+  private userLists = [];
+
   constructor(
-    private router: Router,
-    public authService: AuthService
+    private listService: ListService
   ) { }
 
-  public logOut() {
-    this.authService.logOut();
-    this.router.navigate(['']);
+  public ngOnInit() {
+    this.listService.observeUserLists().subscribe((userLists) => {
+      this.userLists = userLists;
+    });
   }
 }

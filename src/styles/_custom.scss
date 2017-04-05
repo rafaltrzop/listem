@@ -1,12 +1,48 @@
 body {
-  background-color: #fafafa;
+  background-color: $color-light-gray;
 }
 
-md-toolbar {
-  margin-bottom: 30px;
+h1 {
+  font-size: 20px; // TODO: adjust
+}
 
-  a {
-    text-decoration: none;
-    color: rgba(255, 255, 255, .87);
+.le-toolbar {
+  margin-bottom: 30px;
+  //position: fixed;
+  //top: 0;
+  //z-index: 99999;
+
+  button.active::before {
+    content: '';
+    display: block;
+
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid map-get($mat-deep-purple, 500);
+    //border-top: 10px solid red;
+  }
+}
+
+.le-list-card {
+  cursor: pointer;
+  display: flex !important;
+  align-items: center;
+  margin-bottom: 20px;
+  &:hover {
+    box-shadow:
+      0 4px 5px -2px rgba(0, 0, 0, .2),
+      0 7px 10px 1px rgba(0, 0, 0, .14),
+      0 2px 16px 1px rgba(0, 0, 0, .12);
+  }
+
+  &__spacer {
+    flex: 1 1 auto;
   }
 }

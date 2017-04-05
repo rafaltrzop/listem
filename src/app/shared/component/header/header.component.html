@@ -1,26 +1,21 @@
-<md-toolbar color="primary">
-  <header class="container">
-    <!--<a [routerLink]="['']">Listem</a>-->
-
-    <nav>
-      <button md-button [routerLink]="['/lists']">
-        <md-icon>format_list_bulleted</md-icon>
-        Lists
-      </button>
-      <!--<button md-button [routerLink]="['/settings']">-->
-      <!--<md-icon>settings</md-icon>-->
-      <!--Settings-->
-      <!--</button>-->
-      <button md-button [routerLink]="['/trash']">
-        <md-icon>delete</md-icon>
-        Trash
-      </button>
-      <button md-button (click)="logOut()">
-        <md-icon>power_settings_new</md-icon>
-        Log out
-      </button>
-    </nav>
-
+<md-toolbar color="primary" class="le-toolbar">
+  <nav class="container">
+    <button md-button [routerLink]="['/lists']" routerLinkActive="active">
+      <md-icon>format_list_bulleted</md-icon>
+      Lists
+    </button>
+    <!--<button md-button [routerLink]="['/settings']">-->
+    <!--<md-icon>settings</md-icon>-->
+    <!--Settings-->
+    <!--</button>-->
+    <button md-button [routerLink]="['/trash']" routerLinkActive="active">
+      <md-icon>delete</md-icon>
+      Trash
+    </button>
+    <button md-button (click)="logOut()">
+      <md-icon>power_settings_new</md-icon>
+      Log out
+    </button>
 
     <!--<div style="float: right">-->
       <!--<button md-icon-button [mdMenuTriggerFor]="menu">-->
@@ -41,7 +36,5 @@
         <!--</button>-->
       <!--</md-menu>-->
     <!--</div>-->
-
-
-  </header>
+  </nav>
 </md-toolbar>

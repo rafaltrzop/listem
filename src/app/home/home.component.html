@@ -1,10 +1,10 @@
-<md-toolbar color="primary">
+<md-toolbar color="primary" class="le-toolbar">
   <div class="container">
-    <a [routerLink]="['']">Listem</a>
+    Listem
   </div>
 </md-toolbar>
 
-<div class="container form">
+<div class="container le-form">
   <form [formGroup]="form">
     <div>
       <md-input-container>
@@ -18,11 +18,11 @@
       </md-input-container>
     </div>
 
-    <div class="form__submit-container">
+    <div class="le-form__submit-container">
       <button md-raised-button (click)="logIn()" [disabled]="form.invalid">Log in</button>
       <button md-raised-button (click)="signUp()" [disabled]="form.invalid">Sign up</button>
     </div>
 
-    <a class="form__reset-password" (click)="resetPassword()" *ngIf="form.value.email">Forgot password?</a>
+    <a class="le-form__reset-password" (click)="resetPassword()" [ngClass]="{active: form.value.email}">Forgot password?</a>
   </form>
 </div>

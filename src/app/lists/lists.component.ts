@@ -5,7 +5,7 @@ import { ListService } from './list.service';
 
 @Component({
   selector: 'lists',
-  styleUrls: [ './lists.component.scss' ],
+  styleUrls: [ './lists.component.css' ],
   templateUrl: './lists.component.html',
 })
 export class ListsComponent implements OnInit {
