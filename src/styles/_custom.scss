@@ -1,5 +1,6 @@
 body {
   background-color: $color-light-gray;
+  padding-top: 64px + 30px;
 }
 
 h1 {
@@ -7,26 +8,27 @@ h1 {
 }
 
 .le-toolbar {
-  margin-bottom: 30px;
-  //position: fixed;
-  //top: 0;
-  //z-index: 99999;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  box-shadow: 0 20px 20px 4px $color-light-gray;
+
+  .mat-toolbar-row {
+    height: 64px !important;
+  }
 
   button.active::before {
     content: '';
     display: block;
-
     position: absolute;
     bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
-
     width: 0;
     height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid map-get($mat-deep-purple, 500);
-    //border-top: 10px solid red;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid map-get($mat-deep-purple, 500);
   }
 }
 
