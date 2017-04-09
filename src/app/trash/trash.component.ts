@@ -5,7 +5,7 @@ import { ListService } from '../lists/list.service';
 @Component({
   selector: 'le-trash',
   styleUrls: [ './trash.component.css' ],
-  templateUrl: './trash.component.html',
+  templateUrl: './trash.component.html'
 })
 export class TrashComponent implements OnInit {
   private userLists = [];

@@ -6,7 +6,7 @@ import { ListService } from './list.service';
 @Component({
   selector: 'le-lists',
   styleUrls: [ './lists.component.css' ],
-  templateUrl: './lists.component.html',
+  templateUrl: './lists.component.html'
 })
 export class ListsComponent implements OnInit {
   public addListForm: FormGroup;

@@ -23,14 +23,6 @@ export class ListService {
     this.af.database.object('/').$ref.update(updateObject);
   }
 
-  public getList(listId: string) {
-    return this.af.database.object(`/lists/${listId}`);
-  }
-
-  public getListItems(listId: string) {
-    return this.af.database.list(`/listItems/${listId}`);
-  }
-
   public softDeleteList(listId: string) {
     this.af.database.object(`/lists/${listId}`).update({ softDeleted: true });
   }

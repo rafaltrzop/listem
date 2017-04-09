@@ -1,20 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
-import { ListService } from '../list.service';
+import { ListDetailsService } from './list-details.service';
 
 @Component({
   selector: 'le-list-details',
   styleUrls: [ './list-details.component.css' ],
-  templateUrl: './list-details.component.html',
+  templateUrl: './list-details.component.html'
 })
-export class ListDetailsComponent {
-  private listId = this.route.snapshot.params['id'];
-  public listName = this.listService.getList(this.listId);
-  public listItems = this.listService.getListItems(this.listId);
+export class ListDetailsComponent implements OnInit {
+  public addListItemForm: FormGroup;
+  private listId = this.route.snapshot.params['id']; // TODO: move private property below public ones
+  public listName = this.listDetailsService.getList(this.listId);
+  public listItems = this.listDetailsService.getListItems(this.listId);
 
   constructor(
-    private listService: ListService,
+    private listDetailsService: ListDetailsService,
     private route: ActivatedRoute
   ) { }
+
+  public ngOnInit() {
+    this.configureForm();
+  }
+
+  public addListItem() {
+    this.listDetailsService.addListItem(this.listId, this.addListItemForm.value.name);
+    this.addListItemForm.reset();
+  }
+
+  private configureForm() {
+    this.addListItemForm = new FormGroup({
+      name: new FormControl(null, Validators.required)
+    });
+  }
 }
