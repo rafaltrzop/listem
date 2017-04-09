@@ -47,7 +47,7 @@ export class ListService {
   public observeUserLists() {
     return Observable.create((observer) => {
       let listsPerUser = this.af.database.list(
-        '/listsPerUser/' + this.userId,
+        `/listsPerUser/${this.userId}`,
         { preserveSnapshot: true }
       );
       listsPerUser.subscribe((snapshots) => {
