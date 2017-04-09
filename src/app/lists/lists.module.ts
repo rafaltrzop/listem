@@ -2,11 +2,15 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
 import { ListsComponent } from './lists.component';
+import { ListDetailsComponent } from './list-details/list-details.component';
 import { ListService } from './list.service';
 
 @NgModule({
   imports: [ SharedModule ],
-  declarations: [ ListsComponent ],
+  declarations: [
+    ListsComponent,
+    ListDetailsComponent
+  ],
   exports: [ ],
   providers: [ ListService ]
 })

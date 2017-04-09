@@ -6,7 +6,7 @@ import {
 import { AppState } from './app.service';
 
 @Component({
-  selector: 'app',
+  selector: 'le-app',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [ './app.component.css' ],
   templateUrl: './app.component.html'

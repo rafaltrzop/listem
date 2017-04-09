@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ListService } from './list.service';
 
 @Component({
-  selector: 'lists',
+  selector: 'le-lists',
   styleUrls: [ './lists.component.css' ],
   templateUrl: './lists.component.html',
 })

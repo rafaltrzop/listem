@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ListService } from '../lists/list.service';
 
 @Component({
-  selector: 'trash',
+  selector: 'le-trash',
   styleUrls: [ './trash.component.css' ],
   templateUrl: './trash.component.html',
 })

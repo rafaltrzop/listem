@@ -3,11 +3,11 @@ import { Routes } from '@angular/router';
 import { LoggedInGuard } from './logged-in-guard.service';
 import { LoggedOutGuard } from './logged-out-guard.service';
 import { HomeComponent } from './home';
-import { ListsComponent } from './lists';
+import { ListsComponent, ListDetailsComponent } from './lists';
 import { TrashComponent } from './trash';
-import { NoContentComponent } from './no-content';
+import { PageNotFoundComponent } from './page-not-found';
 
-import { DataResolver } from './app.resolver';
+import { DataResolver } from './app.resolver'; // TODO: remove
 
 export const ROUTES: Routes = [
   {
@@ -22,7 +22,7 @@ export const ROUTES: Routes = [
   },
   {
     path: 'lists/:id',
-    component: ListsComponent, // TODO: create list details component
+    component: ListDetailsComponent,
     canActivate: [ LoggedInGuard ]
   },
   {
@@ -32,6 +32,6 @@ export const ROUTES: Routes = [
   },
   {
     path: '**',
-    component: NoContentComponent
+    component: PageNotFoundComponent
   },
 ];

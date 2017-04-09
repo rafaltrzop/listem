@@ -6,7 +6,7 @@ import { MdSnackBar } from '@angular/material';
 import { AuthService } from '../core/service/auth.service';
 
 @Component({
-  selector: 'home',
+  selector: 'le-home',
   styleUrls: [ './home.component.scss' ],
   templateUrl: './home.component.html',
   providers: [ AuthService ]
