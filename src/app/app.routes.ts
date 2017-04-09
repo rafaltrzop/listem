@@ -21,6 +21,11 @@ export const ROUTES: Routes = [
     canActivate: [ LoggedInGuard ]
   },
   {
+    path: 'lists/:id',
+    component: ListsComponent, // TODO: create list details component
+    canActivate: [ LoggedInGuard ]
+  },
+  {
     path: 'trash',
     component: TrashComponent,
     canActivate: [ LoggedInGuard ]

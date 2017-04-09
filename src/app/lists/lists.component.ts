@@ -33,11 +33,6 @@ export class ListsComponent implements OnInit {
     this.listService.softDeleteList(listId);
   }
 
-  public removeList(list) {
-    const listId = list.$ref.key;
-    this.listService.removeList(listId);
-  }
-
   private configureForm() {
     this.addListForm = new FormGroup({
       name: new FormControl(null, Validators.required)

@@ -5,9 +5,12 @@
   <template ngFor let-list [ngForOf]="userLists">
     <md-card class="le-list-card" *ngIf="(list | async)?.softDeleted">
       <!--<md-card *ngIf="!(list | async)?.softDeleted" [routerLink]="['/lists', (list | async)?.$key]">-->
-      <span>{{ (list | async)?.name }}</span>
+      <span [routerLink]="['/lists', (list | async)?.$key]">{{ (list | async)?.name }}</span>
 
       <span class="le-list-card__spacer"></span>
+
+      <!--<button md-button (click)="restoreList(list)">Restore</button>-->
+      <!--<button md-button (click)="hardDeleteList(list)">Delete</button>-->
 
       <button md-icon-button [mdMenuTriggerFor]="menu">
         <md-icon>more_vert</md-icon>
@@ -15,20 +18,17 @@
       <md-menu #menu="mdMenu">
         <button md-menu-item>
           <md-icon>create</md-icon>
-          <span>Change name</span>
+          <span>Rename</span>
         </button>
-        <!--<button md-menu-item (click)="softDeleteList(list)">-->
-          <!--<md-icon>delete</md-icon>-->
-          <!--<span>Move to trash</span>-->
-        <!--</button>-->
-        <!--<button md-menu-item (click)="removeList(list)">-->
-          <!--<md-icon>clear</md-icon>-->
-          <!--<span>Remove list</span>-->
-        <!--</button>-->
+        <button md-menu-item (click)="restoreList(list)">
+          <md-icon>undo</md-icon>
+          <span>Restore</span>
+        </button>
+        <button md-menu-item (click)="hardDeleteList(list)">
+          <md-icon>delete_forever</md-icon>
+          <span>Delete</span>
+        </button>
       </md-menu>
-
     </md-card>
   </template>
 </div>
-
-

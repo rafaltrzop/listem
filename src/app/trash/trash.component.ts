@@ -19,4 +19,14 @@ export class TrashComponent implements OnInit {
       this.userLists = userLists;
     });
   }
+
+  public restoreList(list) {
+    const listId = list.$ref.key;
+    this.listService.restoreList(listId);
+  }
+
+  public hardDeleteList(list) {
+    const listId = list.$ref.key;
+    this.listService.hardDeleteList(listId);
+  }
 }
