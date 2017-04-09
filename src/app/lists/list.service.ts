@@ -8,7 +8,6 @@ import { List } from './list.model';
 @Injectable()
 export class ListService {
   private userId = this.authService.userId;
-  private lists = this.af.database.list('/lists');
 
   constructor(
     private af: AngularFire,
@@ -16,12 +15,20 @@ export class ListService {
   ) { }
 
   public addList(name: string) {
-    const listKey = this.lists.push(new List(name)).key;
+    const listId = this.af.database.list('/lists').push(new List(name)).key;
     const updateObject = {
-      [`/listsPerUser/${this.userId}/${listKey}`]: true,
-      [`/usersPerList/${listKey}/${this.userId}`]: true
+      [`/listsPerUser/${this.userId}/${listId}`]: true,
+      [`/usersPerList/${listId}/${this.userId}`]: true
     };
     this.af.database.object('/').$ref.update(updateObject);
+  }
+
+  public getList(listId: string) {
+    return this.af.database.object(`/lists/${listId}`);
+  }
+
+  public getListItems(listId: string) {
+    return this.af.database.list(`/listItems/${listId}`);
   }
 
   public softDeleteList(listId: string) {
