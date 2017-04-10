@@ -1,22 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MdSnackBar } from '@angular/material';
 
 import { AuthService } from '../core/service/auth.service';
+import { SnackBarService } from '../core/service/snackbar.service';
 
 @Component({
   selector: 'le-home',
   styleUrls: [ './home.component.scss' ],
   templateUrl: './home.component.html',
-  providers: [ AuthService ]
+  providers: [
+    AuthService,
+    SnackBarService
+  ]
 })
 export class HomeComponent implements OnInit {
   public form: FormGroup;
 
   constructor(
     private authService: AuthService,
-    private snackBar: MdSnackBar,
+    private snackBarService: SnackBarService,
     private router: Router
   ) { }
 
@@ -27,28 +30,28 @@ export class HomeComponent implements OnInit {
   public signUp() {
     const signUp = this.authService.signUp(this.form.value.email, this.form.value.password);
 
-    signUp.then((data) => {
+    signUp.then(() => {
       this.logIn();
     }, (error) => {
-      this.openSnackBar(error.message, 'OK');
+      this.snackBarService.openSnackBar(error.message);
     });
   }
 
   public logIn() {
     const logIn = this.authService.logIn(this.form.value.email, this.form.value.password);
 
-    logIn.then((data) => {
+    logIn.then(() => {
       this.router.navigate(['lists']);
     }, (error) => {
-      this.openSnackBar(error.message, 'OK');
+      this.snackBarService.openSnackBar(error.message);
     });
   }
 
   public resetPassword() {
     this.authService.resetPassword(this.form.value.email).then(() => {
-      this.openSnackBar('Check your email inbox', 'OK');
+      this.snackBarService.openSnackBar('Check your email inbox');
     }, (error) => {
-      this.openSnackBar(error.message, 'OK');
+      this.snackBarService.openSnackBar(error.message);
     });
   }
 
@@ -56,12 +59,6 @@ export class HomeComponent implements OnInit {
     this.form = new FormGroup({
       email: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required)
-    });
-  }
-
-  private openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 10000
     });
   }
 }

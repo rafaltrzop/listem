@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ListService } from './list.service';
+import { SnackBarService } from '../core/service/snackbar.service';
 
 @Component({
   selector: 'le-lists',
@@ -13,7 +14,8 @@ export class ListsComponent implements OnInit {
   private userLists = [];
 
   constructor(
-    private listService: ListService
+    private listService: ListService,
+    private snackBarService: SnackBarService
   ) { }
 
   public ngOnInit() {
@@ -30,7 +32,12 @@ export class ListsComponent implements OnInit {
 
   public softDeleteList(list) {
     const listId = list.$ref.key;
-    this.listService.softDeleteList(listId);
+    this.listService.softDeleteList(listId).then(() => {
+      // TODO: display list name in the snackbar and restore list
+      this.snackBarService.openSnackBar('List XYZ deleted', 'UNDO').onAction().subscribe(() => {
+        console.log('restore list method');
+      });
+    });
   }
 
   private configureForm() {

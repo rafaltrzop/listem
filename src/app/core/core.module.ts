@@ -7,18 +7,25 @@ import {
 import { CommonModule } from '@angular/common';
 
 import { AuthService } from './service/auth.service';
+import { SnackBarService } from './service/snackbar.service';
 
 @NgModule({
   imports: [ CommonModule ],
   declarations: [ ],
   exports: [ ],
-  providers: [ AuthService ]
+  providers: [
+    AuthService,
+    SnackBarService
+  ]
 })
 export class CoreModule {
   public static forRoot(): ModuleWithProviders {
     return {
       ngModule: CoreModule,
-      providers: [ AuthService ]
+      providers: [
+        AuthService,
+        SnackBarService
+      ]
     };
   }
 
