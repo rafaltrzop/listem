@@ -11,9 +11,15 @@
   </form>
 
   <h1>{{ (listName | async)?.name }}</h1>
-  <ul>
-    <li *ngFor="let item of listItems | async">
-      {{ item.name }}
-    </li>
-  </ul>
+  <md-card class="le-list-items-card">
+    <md-list>
+      <template ngFor let-item [ngForOf]="listItems | async" let-last="last">
+        <md-list-item>
+          <md-checkbox [checked]="item.checked">{{ item.name }}</md-checkbox>
+        </md-list-item>
+        <md-divider *ngIf="!last"></md-divider>
+      </template>
+    </md-list>
+  </md-card>
+
 </div>

@@ -6,7 +6,7 @@ import { ListDetailsService } from './list-details.service';
 
 @Component({
   selector: 'le-list-details',
-  styleUrls: [ './list-details.component.css' ],
+  styleUrls: [ './list-details.component.scss' ],
   templateUrl: './list-details.component.html'
 })
 export class ListDetailsComponent implements OnInit {
