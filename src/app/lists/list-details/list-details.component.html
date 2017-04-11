@@ -13,13 +13,23 @@
   <h1>{{ (listName | async)?.name }}</h1>
   <md-card class="le-list-items-card">
     <md-list>
+      <template ngFor let-item [ngForOf]="listItems | async">
+        <span *ngIf="!item.checked">
+          <md-list-item>
+            <md-checkbox [checked]="item.checked" (click)="checkItem(item.$key)">{{ item.name }}</md-checkbox>
+          </md-list-item>
+          <md-divider></md-divider>
+        </span>
+      </template>
+
       <template ngFor let-item [ngForOf]="listItems | async" let-last="last">
-        <md-list-item>
-          <md-checkbox [checked]="item.checked">{{ item.name }}</md-checkbox>
-        </md-list-item>
-        <md-divider *ngIf="!last"></md-divider>
+        <span *ngIf="item.checked">
+          <md-list-item>
+            <md-checkbox [checked]="item.checked" (click)="uncheckItem(item.$key)">{{ item.name }}</md-checkbox>
+          </md-list-item>
+          <md-divider *ngIf="!last"></md-divider>
+        </span>
       </template>
     </md-list>
   </md-card>
-
 </div>

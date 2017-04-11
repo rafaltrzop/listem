@@ -29,6 +29,14 @@ export class ListDetailsComponent implements OnInit {
     this.addListItemForm.reset();
   }
 
+  public checkItem(itemId: string) {
+    this.listDetailsService.toggleItem(this.listId, itemId, true);
+  }
+
+  public uncheckItem(itemId: string) {
+    this.listDetailsService.toggleItem(this.listId, itemId, false);
+  }
+
   private configureForm() {
     this.addListItemForm = new FormGroup({
       name: new FormControl(null, Validators.required)

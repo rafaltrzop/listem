@@ -18,6 +18,14 @@ export class ListDetailsService {
   }
 
   public getListItems(listId: string) {
-    return this.af.database.list(`/listItems/${listId}`);
+    return this.af.database.list(`/listItems/${listId}`, {
+      query: {
+        orderByChild: 'name'
+      }
+    });
+  }
+
+  public toggleItem(listId: string, itemId: string, checked: boolean) {
+    this.af.database.object(`/listItems/${listId}/${itemId}`).update({ checked });
   }
 }
