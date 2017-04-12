@@ -1,0 +1,12 @@
+.le-add-list-item {
+  position: fixed;
+  bottom: 34px;
+  right: 36px;
+  z-index: 2;
+}
+
+@media (min-width: 992px) {
+  .le-add-list-item {
+    top: 34px;
+  }
+}
