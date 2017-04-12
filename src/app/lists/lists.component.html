@@ -1,19 +1,10 @@
 <le-header></le-header>
 
-<button md-fab class="le-add-list-item">
+<button md-fab (click)="openAddListDialog()" class="le-add-list-item">
   <md-icon>add</md-icon>
 </button>
 
 <div class="container">
-  <h1>Create list</h1>
-  <form [formGroup]="addListForm" (submit)="addList()">
-    <md-input-container>
-      <input mdInput type="text" placeholder="List name" formControlName="name">
-    </md-input-container>
-
-    <button md-raised-button type="submit" [disabled]="addListForm.invalid">Add list</button>
-  </form>
-
   <h1>Your lists</h1>
   <template ngFor let-list [ngForOf]="userLists">
     <md-card class="le-list-card" *ngIf="!(list | async)?.softDeleted">
