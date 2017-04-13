@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MdDialogRef } from '@angular/material';
 
 import { ListService } from '../list.service';
 
@@ -12,6 +13,7 @@ export class AddListDialogComponent implements OnInit {
   public addListForm: FormGroup;
 
   constructor(
+    private mdDialogRef: MdDialogRef<AddListDialogComponent>,
     private listService: ListService
   ) { }
 
@@ -21,7 +23,7 @@ export class AddListDialogComponent implements OnInit {
 
   public addList() {
     this.listService.addList(this.addListForm.value.name);
-    this.addListForm.reset();
+    this.mdDialogRef.close();
   }
 
   private configureForm() {
