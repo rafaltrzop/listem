@@ -31,11 +31,18 @@ export class ListsComponent implements OnInit {
 
   public softDeleteList(list) {
     const listId = list.$ref.key;
+
+    let listName: string;
+    list.subscribe((data) => {
+      listName = data.name;
+    });
+
     this.listService.softDeleteList(listId).then(() => {
-      // TODO: display list name in the snackbar and restore list
-      this.snackBarService.openSnackBar('List XYZ deleted', 'UNDO').onAction().subscribe(() => {
-        console.log('restore list method');
-      });
+      this.snackBarService.openSnackBar(`List ${listName} deleted`, 'UNDO')
+        .onAction().subscribe(() => {
+          this.listService.restoreList(listId);
+        }
+      );
     });
   }
 }
