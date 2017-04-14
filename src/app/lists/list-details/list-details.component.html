@@ -18,7 +18,7 @@
           <md-list-item class="le-list-item">
             <md-checkbox [checked]="item.checked" (click)="checkItem(item.$key)">{{ item.name }}</md-checkbox>
             <span class="le-list-item__spacer"></span>
-            <md-icon class="le-list-item__delete" (click)="deleteItem()">delete</md-icon>
+            <md-icon class="le-list-item__delete" (click)="deleteListItem(item.$key)">delete</md-icon>
           </md-list-item>
           <md-divider></md-divider>
         </span>
@@ -29,7 +29,7 @@
           <md-list-item class="le-list-item">
             <md-checkbox [checked]="item.checked" (click)="uncheckItem(item.$key)">{{ item.name }}</md-checkbox>
             <span class="le-list-item__spacer"></span>
-            <md-icon class="le-list-item__delete" (click)="deleteItem()">delete</md-icon>
+            <md-icon class="le-list-item__delete" (click)="deleteListItem(item.$key)">delete</md-icon>
           </md-list-item>
           <md-divider *ngIf="!last"></md-divider>
         </span>
