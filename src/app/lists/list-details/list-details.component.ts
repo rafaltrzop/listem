@@ -37,6 +37,10 @@ export class ListDetailsComponent implements OnInit {
     this.listDetailsService.toggleItem(this.listId, itemId, false);
   }
 
+  public deleteItem(itemId: string) {
+    console.log('delete item');
+  }
+
   private configureForm() {
     this.addListItemForm = new FormGroup({
       name: new FormControl(null, Validators.required)

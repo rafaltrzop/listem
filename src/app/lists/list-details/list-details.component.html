@@ -15,8 +15,10 @@
     <md-list>
       <template ngFor let-item [ngForOf]="listItems | async">
         <span *ngIf="!item.checked">
-          <md-list-item>
+          <md-list-item class="le-list-item">
             <md-checkbox [checked]="item.checked" (click)="checkItem(item.$key)">{{ item.name }}</md-checkbox>
+            <span class="le-list-item__spacer"></span>
+            <md-icon class="le-list-item__delete" (click)="deleteItem()">delete</md-icon>
           </md-list-item>
           <md-divider></md-divider>
         </span>
@@ -24,8 +26,10 @@
 
       <template ngFor let-item [ngForOf]="listItems | async" let-last="last">
         <span *ngIf="item.checked">
-          <md-list-item>
+          <md-list-item class="le-list-item">
             <md-checkbox [checked]="item.checked" (click)="uncheckItem(item.$key)">{{ item.name }}</md-checkbox>
+            <span class="le-list-item__spacer"></span>
+            <md-icon class="le-list-item__delete" (click)="deleteItem()">delete</md-icon>
           </md-list-item>
           <md-divider *ngIf="!last"></md-divider>
         </span>

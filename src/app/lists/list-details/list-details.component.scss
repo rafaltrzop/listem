@@ -1,3 +1,25 @@
 .le-list-items-card {
   padding: 0;
 }
+
+.le-list-item {
+  &__spacer {
+    flex: 1 1 auto;
+  }
+
+  &__delete {
+    opacity: 0;
+    color: #757575;
+    cursor: pointer;
+    transition:
+      opacity .2s,
+      color .3s;
+  }
+
+  &:hover &__delete {
+    opacity: 1;
+    &:hover {
+      color: red;
+    }
+  }
+}
