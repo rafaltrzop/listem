@@ -12,7 +12,7 @@ import { ListDetailsService } from './list-details.service';
 export class ListDetailsComponent implements OnInit {
   public addListItemForm: FormGroup;
   public listId = this.route.snapshot.params['id']; // TODO: make private?
-  public listName = this.listDetailsService.getList(this.listId);
+  public list = this.listDetailsService.getList(this.listId);
   public listItems = this.listDetailsService.getListItems(this.listId);
 
   constructor(

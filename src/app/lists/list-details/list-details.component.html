@@ -10,7 +10,7 @@
     <button md-raised-button type="submit" [disabled]="addListItemForm.invalid">Add item</button>
   </form>
 
-  <h1>{{ (listName | async)?.name }}</h1>
+  <h1>{{ (list | async)?.name }}</h1>
   <md-card class="le-list-items-card">
     <md-list>
       <template ngFor let-item [ngForOf]="listItems | async">
