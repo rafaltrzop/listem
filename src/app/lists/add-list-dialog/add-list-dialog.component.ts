@@ -6,7 +6,7 @@ import { ListService } from '../list.service';
 
 @Component({
   selector: 'le-add-list-dialog',
-  styleUrls: [ './add-list-dialog.component.css' ],
+  styleUrls: [ './add-list-dialog.component.scss' ],
   templateUrl: './add-list-dialog.component.html'
 })
 export class AddListDialogComponent implements OnInit {

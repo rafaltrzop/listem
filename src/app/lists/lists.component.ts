@@ -25,12 +25,8 @@ export class ListsComponent implements OnInit {
     });
   }
 
-  // TODO: adjust
   public openAddListDialog() {
-    this.mdDialog.open(AddListDialogComponent, {
-      // height: '400px',
-      // width: '600px'
-    });
+    this.mdDialog.open(AddListDialogComponent);
   }
 
   public softDeleteList(list) {
