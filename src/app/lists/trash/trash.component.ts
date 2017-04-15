@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ListService } from '../lists/list.service';
+import { ListService } from '../list.service';
 
 @Component({
   selector: 'le-trash',
