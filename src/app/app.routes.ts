@@ -30,6 +30,11 @@ export const ROUTES: Routes = [
     canActivate: [ LoggedInGuard ]
   },
   {
+    path: 'trash/:id',
+    component: ListDetailsComponent,
+    canActivate: [ LoggedInGuard ]
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   },
