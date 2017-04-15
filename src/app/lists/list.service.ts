@@ -23,6 +23,14 @@ export class ListService {
     this.af.database.object('/').$ref.update(updateObject);
   }
 
+  public shareList(listId: string, userId: string) {
+    const updateObject = {
+      [`/listsPerUser/${userId}/${listId}`]: true,
+      [`/usersPerList/${listId}/${userId}`]: true
+    };
+    this.af.database.object('/').$ref.update(updateObject);
+  }
+
   public softDeleteList(listId: string) {
     return this.af.database.object(`/lists/${listId}`).update({ softDeleted: true });
   }

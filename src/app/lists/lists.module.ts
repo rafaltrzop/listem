@@ -5,6 +5,7 @@ import { ListsComponent } from './lists.component';
 import { TrashComponent } from './trash/trash.component';
 import { ListDetailsComponent } from './list-details/list-details.component';
 import { AddListDialogComponent } from './add-list-dialog/add-list-dialog.component';
+import { ShareListDialogComponent } from './share-list-dialog/share-list-dialog.component';
 import { ListService } from './list.service';
 import { ListDetailsService } from './list-details/list-details.service';
 
@@ -14,10 +15,12 @@ import { ListDetailsService } from './list-details/list-details.service';
     ListsComponent,
     TrashComponent,
     ListDetailsComponent,
-    AddListDialogComponent
+    AddListDialogComponent,
+    ShareListDialogComponent
   ],
   entryComponents: [
-    AddListDialogComponent
+    AddListDialogComponent,
+    ShareListDialogComponent
   ],
   exports: [ ],
   providers: [

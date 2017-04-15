@@ -9,7 +9,7 @@
   <template ngFor let-list [ngForOf]="userLists">
     <md-card class="le-list-card" *ngIf="!(list | async)?.softDeleted">
     <!--<md-card class="le-list-card" *ngIf="!(list | async)?.softDeleted" [routerLink]="['/lists', (list | async)?.$key]">-->
-      <span [routerLink]="['/lists', (list | async)?.$key]">{{ (list | async)?.name }}</span>
+      <span [routerLink]="['/lists', list.$ref.key]">{{ (list | async)?.name }}</span>
 
       <span class="le-list-card__spacer"></span>
 
@@ -21,7 +21,7 @@
           <md-icon>create</md-icon>
           <span>Rename</span>
         </button>
-        <button md-menu-item>
+        <button md-menu-item (click)="openShareListDialog(list.$ref.key)">
           <md-icon>share</md-icon>
           <span>Share</span>
         </button>
