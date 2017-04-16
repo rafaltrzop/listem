@@ -28,31 +28,25 @@ export class HomeComponent implements OnInit {
   }
 
   public signUp() {
-    const signUp = this.authService.signUp(this.form.value.email, this.form.value.password);
-
-    signUp.then(() => {
+    this.authService.signUp(this.form.value.email, this.form.value.password).then(() => {
       this.logIn();
-    }, (error) => {
+    }).catch((error) => {
       this.snackBarService.openSnackBar(error.message);
     });
   }
 
   public logIn() {
-    const logIn = this.authService.logIn(this.form.value.email, this.form.value.password);
-
-    logIn.then(() => {
+    this.authService.logIn(this.form.value.email, this.form.value.password).then(() => {
       this.router.navigate(['lists']);
-    }, (error) => {
+    }).catch((error) => {
       this.snackBarService.openSnackBar(error.message);
     });
   }
 
   public resetPassword() {
-    const resetPassword = this.authService.resetPassword(this.form.value.email);
-
-    resetPassword.then(() => {
+    this.authService.resetPassword(this.form.value.email).then(() => {
       this.snackBarService.openSnackBar('Check your email inbox');
-    }, (error) => {
+    }).catch((error) => {
       this.snackBarService.openSnackBar(error.message);
     });
   }
