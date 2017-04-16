@@ -3,10 +3,16 @@
   bottom: 34px;
   right: 36px;
   z-index: 2;
+  animation: .3s zoomIn;
 }
 
 @media (min-width: 992px) {
   .le-add-list-item {
     top: 34px;
   }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
 }
