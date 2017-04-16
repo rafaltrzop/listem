@@ -48,7 +48,9 @@ export class HomeComponent implements OnInit {
   }
 
   public resetPassword() {
-    this.authService.resetPassword(this.form.value.email).then(() => {
+    const resetPassword = this.authService.resetPassword(this.form.value.email);
+
+    resetPassword.then(() => {
       this.snackBarService.openSnackBar('Check your email inbox');
     }, (error) => {
       this.snackBarService.openSnackBar(error.message);

@@ -23,12 +23,15 @@ export class ListService {
     this.af.database.object('/').$ref.update(updateObject);
   }
 
-  public shareList(listId: string, userId: string) {
-    const updateObject = {
-      [`/listsPerUser/${userId}/${listId}`]: true,
-      [`/usersPerList/${listId}/${userId}`]: true
-    };
-    this.af.database.object('/').$ref.update(updateObject);
+  public shareList(listId: string, userEmail: string) {
+    this.getUserIdByEmail(userEmail).then((user) => {
+      const userId = user.val().uid;
+      const updateObject = {
+        [`/listsPerUser/${userId}/${listId}`]: true,
+        [`/usersPerList/${listId}/${userId}`]: true
+      };
+      this.af.database.object('/').$ref.update(updateObject);
+    });
   }
 
   public softDeleteList(listId: string) {
@@ -74,5 +77,10 @@ export class ListService {
       userLists.push(list);
     }
     return userLists;
+  }
+
+  private getUserIdByEmail(email: string) {
+    const emailHash = btoa(email);
+    return this.af.database.object(`/users/${emailHash}`).$ref.once('value');
   }
 }

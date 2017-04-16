@@ -16,7 +16,17 @@ export class AuthService {
   }
 
   public signUp(email: string, password: string) {
-    return this.af.auth.createUser({ email, password });
+    const signUp = this.af.auth.createUser({ email, password });
+    const emailHash = btoa(email);
+
+    signUp.then((user) => {
+      this.af.database.object(`/users/${emailHash}`).set({
+        uid: user.uid,
+        email
+      });
+    }, () => { return; });
+
+    return signUp;
   }
 
   public logIn(email: string, password: string) {

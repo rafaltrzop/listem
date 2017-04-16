@@ -6,7 +6,7 @@ import { ListService } from '../list.service';
 
 @Component({
   selector: 'le-share-list-dialog',
-  styleUrls: [ './share-list-dialog.component.css' ],
+  styleUrls: [ './share-list-dialog.component.scss' ],
   templateUrl: './share-list-dialog.component.html'
 })
 export class ShareListDialogComponent implements OnInit {
@@ -22,19 +22,14 @@ export class ShareListDialogComponent implements OnInit {
     this.configureForm();
   }
 
-  public shareList(userId: string) {
-    console.log('listId wybranej listy:', this.data.listId);
-
-    this.listService.shareList(this.data.listId, userId);
+  public shareList() {
+    this.listService.shareList(this.data.listId, this.shareListForm.value.email);
     this.mdDialogRef.close();
-
-    // this.listService.shareList(this.shareListForm.value.name);
-    // this.mdDialogRef.close();
   }
 
   private configureForm() {
     this.shareListForm = new FormGroup({
-      name: new FormControl(null, Validators.required)
+      email: new FormControl(null, Validators.required)
     });
   }
 }
