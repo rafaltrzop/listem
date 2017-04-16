@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 import { ListService } from '../list.service';
+import { SnackBarService } from '../../core/service/snackbar.service';
 
 @Component({
   selector: 'le-share-list-dialog',
@@ -15,7 +16,8 @@ export class ShareListDialogComponent implements OnInit {
   constructor(
     private mdDialogRef: MdDialogRef<ShareListDialogComponent>,
     @Inject(MD_DIALOG_DATA) private data: { listId: string },
-    private listService: ListService
+    private listService: ListService,
+    private snackBarService: SnackBarService
   ) { }
 
   public ngOnInit() {
@@ -23,8 +25,12 @@ export class ShareListDialogComponent implements OnInit {
   }
 
   public shareList() {
-    this.listService.shareList(this.data.listId, this.shareListForm.value.email);
-    this.mdDialogRef.close();
+    this.listService.shareList(this.data.listId, this.shareListForm.value.email).then(() => {
+      this.snackBarService.openSnackBar('List has been shared');
+      this.mdDialogRef.close();
+    }).catch(() => {
+      this.snackBarService.openSnackBar('No such user was found');
+    });
   }
 
   private configureForm() {

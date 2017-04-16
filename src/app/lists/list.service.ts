@@ -24,13 +24,21 @@ export class ListService {
   }
 
   public shareList(listId: string, userEmail: string) {
-    this.getUserIdByEmail(userEmail).then((user) => {
-      const userId = user.val().uid;
-      const updateObject = {
-        [`/listsPerUser/${userId}/${listId}`]: true,
-        [`/usersPerList/${listId}/${userId}`]: true
-      };
-      this.af.database.object('/').$ref.update(updateObject);
+    return new Promise((resolve, reject) => {
+      this.getUserIdByEmail(userEmail).then((user) => {
+        const userData = user.val();
+        if (userData) {
+          const userId = userData.uid;
+          const updateObject = {
+            [`/listsPerUser/${userId}/${listId}`]: true,
+            [`/usersPerList/${listId}/${userId}`]: true
+          };
+          this.af.database.object('/').$ref.update(updateObject);
+          resolve(true);
+        } else {
+          reject(false);
+        }
+      });
     });
   }
 
