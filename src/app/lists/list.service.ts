@@ -8,6 +8,7 @@ import { List } from './list.model';
 @Injectable()
 export class ListService {
   private userId = this.authService.userId;
+  private userEmail = this.authService.userEmail;
 
   constructor(
     private af: AngularFire,
@@ -18,9 +19,22 @@ export class ListService {
     const listId = this.af.database.list('/lists').push(new List(name)).key;
     const updateObject = {
       [`/listsPerUser/${this.userId}/${listId}`]: true,
-      [`/usersPerList/${listId}/${this.userId}`]: true
+      [`/usersPerList/${listId}/${this.userId}`]: { email: this.userEmail }
     };
     this.af.database.object('/').$ref.update(updateObject);
+  }
+
+  public getListOwners(listId: string) {
+    return this.af.database.list(`/usersPerList/${listId}`, {
+      query: {
+        orderByChild: 'email'
+      }
+    });
+  }
+
+  public deleteListOwner(listId: string, userId: string) {
+    this.af.database.object(`/usersPerList/${listId}/${userId}`).remove();
+    this.af.database.object(`/listsPerUser/${userId}/${listId}`).remove();
   }
 
   public shareList(listId: string, userEmail: string) {
@@ -31,7 +45,7 @@ export class ListService {
           const userId = userData.uid;
           const updateObject = {
             [`/listsPerUser/${userId}/${listId}`]: true,
-            [`/usersPerList/${listId}/${userId}`]: true
+            [`/usersPerList/${listId}/${userId}`]: { email: userEmail }
           };
           this.af.database.object('/').$ref.update(updateObject);
           resolve(true);

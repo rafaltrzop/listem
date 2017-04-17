@@ -45,4 +45,8 @@ export class AuthService {
   get userId() {
     return this.authState.uid;
   }
+
+  get userEmail() {
+    return this.authState.auth.email;
+  }
 }
