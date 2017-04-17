@@ -1,5 +1,5 @@
 <md-toolbar color="primary" class="le-toolbar">
-  <nav class="container">
+  <nav class="container le-nav">
     <button md-button routerLink="/lists" routerLinkActive="active">
       <md-icon>format_list_bulleted</md-icon>
       Lists
@@ -12,6 +12,9 @@
       <md-icon>delete</md-icon>
       Trash
     </button>
+
+    <span class="le-nav__spacer"></span>
+
     <button md-button (click)="logOut()">
       <md-icon>power_settings_new</md-icon>
       Log out

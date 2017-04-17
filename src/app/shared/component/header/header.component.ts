@@ -5,7 +5,7 @@ import { AuthService } from '../../../core';
 
 @Component({
   selector: 'le-header',
-  styleUrls: [ './header.component.css' ],
+  styleUrls: [ './header.component.scss' ],
   templateUrl: './header.component.html'
 })
 export class HeaderComponent {
