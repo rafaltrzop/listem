@@ -13,7 +13,7 @@ import { AuthService } from '../../core/service/auth.service';
 export class ListOwnersDialogComponent implements OnInit {
   public deleteListOwnerForm: FormGroup;
   public listOwners = this.listService.getListOwners(this.data.listId);
-  public userEmail = this.authService.userEmail;
+  public currentUserEmail = this.authService.userEmail;
 
   constructor(
     @Inject(MD_DIALOG_DATA) private data: { listId: string },

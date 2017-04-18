@@ -15,13 +15,21 @@ export class ListService {
     private authService: AuthService
   ) { }
 
-  public addList(name: string) {
-    const listId = this.af.database.list('/lists').push(new List(name)).key;
+  public addList(listName: string) {
+    const listId = this.af.database.list('/lists').push(new List(listName)).key;
     const updateObject = {
       [`/listsPerUser/${this.userId}/${listId}`]: true,
       [`/usersPerList/${listId}/${this.userId}`]: { email: this.userEmail }
     };
     this.af.database.object('/').$ref.update(updateObject);
+  }
+
+  public renameList(listId: string, listName: string) {
+    this.af.database.object(`/lists/${listId}`).update({ name: listName });
+  }
+
+  public getListName(listId: string) {
+    return this.af.database.object(`/lists/${listId}/name`).$ref.once('value');
   }
 
   public getListOwners(listId: string) {

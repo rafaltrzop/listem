@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MdDialog } from '@angular/material'; // TODO: what about shared module?
 
 import { AddListDialogComponent } from './add-list-dialog/add-list-dialog.component';
+import { RenameListDialogComponent } from './rename-list-dialog/rename-list-dialog.component';
 import { ShareListDialogComponent } from './share-list-dialog/share-list-dialog.component';
 import { ListOwnersDialogComponent } from './list-owners-dialog/list-owners-dialog.component';
 import { ListService } from './list.service';
@@ -31,6 +32,17 @@ export class ListsComponent implements OnInit {
     this.mdDialog.open(AddListDialogComponent);
   }
 
+  public openRenameListDialog(listId: string) {
+    this.listService.getListName(listId).then((listName) => {
+      this.mdDialog.open(RenameListDialogComponent, {
+        data: {
+          listId,
+          listName: listName.val()
+        }
+      });
+    });
+  }
+
   public openShareListDialog(listId: string) {
     this.mdDialog.open(ShareListDialogComponent, {
       data: { listId }
@@ -43,11 +55,10 @@ export class ListsComponent implements OnInit {
     });
   }
 
-  public softDeleteList(list) {
-    const listId = list.$ref.key;
+  public softDeleteList(listId: string) {
     this.listService.softDeleteList(listId).then(() => {
-      list.subscribe((deletedList) => {
-        this.snackBarService.openSnackBar(`List ${deletedList.name} deleted`, 'UNDO')
+      this.listService.getListName(listId).then((listName) => {
+        this.snackBarService.openSnackBar(`List ${listName.val()} deleted`, 'UNDO')
           .onAction().subscribe(() => {
             this.listService.restoreList(listId);
           }

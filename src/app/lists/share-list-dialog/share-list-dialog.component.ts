@@ -7,7 +7,7 @@ import { SnackBarService } from '../../core/service/snackbar.service';
 
 @Component({
   selector: 'le-share-list-dialog',
-  styleUrls: [ './share-list-dialog.component.scss' ],
+  styleUrls: [ './share-list-dialog.component.css' ],
   templateUrl: './share-list-dialog.component.html'
 })
 export class ShareListDialogComponent implements OnInit {
