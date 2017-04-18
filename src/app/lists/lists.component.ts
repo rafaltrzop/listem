@@ -3,6 +3,7 @@ import { MdDialog } from '@angular/material'; // TODO: what about shared module?
 
 import { AddListDialogComponent } from './add-list-dialog/add-list-dialog.component';
 import { ShareListDialogComponent } from './share-list-dialog/share-list-dialog.component';
+import { ListOwnersDialogComponent } from './list-owners-dialog/list-owners-dialog.component';
 import { ListService } from './list.service';
 import { SnackBarService } from '../core/service/snackbar.service';
 
@@ -32,6 +33,12 @@ export class ListsComponent implements OnInit {
 
   public openShareListDialog(listId: string) {
     this.mdDialog.open(ShareListDialogComponent, {
+      data: { listId }
+    });
+  }
+
+  public openListOwnersDialog(listId: string) {
+    this.mdDialog.open(ListOwnersDialogComponent, {
       data: { listId }
     });
   }

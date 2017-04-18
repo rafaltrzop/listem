@@ -20,11 +20,11 @@
           <md-icon>create</md-icon>
           <span>Rename</span>
         </button>
-        <button md-menu-item (click)="restoreList(list)">
+        <button md-menu-item (click)="restoreList(list.$ref.key)">
           <md-icon>undo</md-icon>
           <span>Restore</span>
         </button>
-        <button md-menu-item (click)="hardDeleteList(list)">
+        <button md-menu-item (click)="hardDeleteList(list.$ref.key)">
           <md-icon>close</md-icon>
           <span>Remove</span>
         </button>

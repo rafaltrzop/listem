@@ -13,6 +13,10 @@
 
       <span class="le-list-card__spacer"></span>
 
+      <button md-icon-button (click)="openListOwnersDialog(list.$ref.key)">
+        <md-icon>group</md-icon>
+      </button>
+
       <button md-icon-button [mdMenuTriggerFor]="menu">
         <md-icon>more_vert</md-icon>
       </button>

@@ -1,34 +1,12 @@
-<md-tab-group dynamicHeight="true">
-  <md-tab label="Share list">
-    <form [formGroup]="shareListForm" (submit)="shareList()" class="le-share-list-form">
-      <md-dialog-content>
-        <md-input-container>
-          <input mdInput type="email" placeholder="Email" formControlName="email">
-        </md-input-container>
-      </md-dialog-content>
+<form [formGroup]="shareListForm" (submit)="shareList()" class="le-share-list-form">
+  <md-dialog-content>
+    <md-input-container>
+      <input mdInput type="email" placeholder="Email" formControlName="email">
+    </md-input-container>
+  </md-dialog-content>
 
-      <md-dialog-actions>
-        <button md-button type="submit" [disabled]="shareListForm.invalid">Share list</button>
-        <button md-button md-dialog-close type="button">Close</button>
-      </md-dialog-actions>
-    </form>
-  </md-tab>
-
-  <md-tab label="List owners">
-    <form [formGroup]="deleteListOwnerForm" (submit)="deleteListOwner(deleteListOwnerForm.value.owner)" class="le-delete-list-owner-form">
-      <md-dialog-content>
-        <p *ngIf="(listOwners | async)?.length === 1">You are the only owner of the list.</p>
-        <md-radio-group formControlName="owner">
-          <template ngFor let-owner [ngForOf]="listOwners | async">
-            <md-radio-button disableRipple value="{{ owner.$key }}" *ngIf="owner.email !== userEmail">{{ owner.email }}</md-radio-button>
-          </template>
-        </md-radio-group>
-      </md-dialog-content>
-
-      <md-dialog-actions>
-        <button md-button type="submit" [disabled]="deleteListOwnerForm.invalid">Revoke access</button>
-        <button md-button md-dialog-close type="button">Close</button>
-      </md-dialog-actions>
-    </form>
-  </md-tab>
-</md-tab-group>
+  <md-dialog-actions>
+    <button md-button type="submit" [disabled]="shareListForm.invalid">Share list</button>
+    <button md-button md-dialog-close type="button">Close</button>
+  </md-dialog-actions>
+</form>

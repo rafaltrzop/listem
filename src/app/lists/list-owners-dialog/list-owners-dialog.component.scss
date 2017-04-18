@@ -1,0 +1,18 @@
+.le-delete-list-owner-form {
+  p {
+    text-align: center;
+  }
+
+  md-radio-button {
+    display: block;
+    margin: 15px 0;
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  md-dialog-actions {
+    justify-content: center;
+  }
+}
+

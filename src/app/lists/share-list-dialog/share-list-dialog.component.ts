@@ -4,7 +4,6 @@ import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 import { ListService } from '../list.service';
 import { SnackBarService } from '../../core/service/snackbar.service';
-import { AuthService } from '../../core/service/auth.service';
 
 @Component({
   selector: 'le-share-list-dialog',
@@ -13,16 +12,12 @@ import { AuthService } from '../../core/service/auth.service';
 })
 export class ShareListDialogComponent implements OnInit {
   public shareListForm: FormGroup;
-  public deleteListOwnerForm: FormGroup;
-  public listOwners = this.listService.getListOwners(this.data.listId);
-  public userEmail = this.authService.userEmail;
 
   constructor(
     private mdDialogRef: MdDialogRef<ShareListDialogComponent>,
     @Inject(MD_DIALOG_DATA) private data: { listId: string },
     private listService: ListService,
-    private snackBarService: SnackBarService,
-    private authService: AuthService
+    private snackBarService: SnackBarService
   ) { }
 
   public ngOnInit() {
@@ -30,26 +25,19 @@ export class ShareListDialogComponent implements OnInit {
   }
 
   public shareList() {
-    this.listService.shareList(this.data.listId, this.shareListForm.value.email).then(() => {
-      this.snackBarService.openSnackBar('List has been shared');
+    const userEmail = this.shareListForm.value.email;
+    this.listService.shareList(this.data.listId, userEmail).then(() => {
+      this.snackBarService.openSnackBar(`List has been shared with ${userEmail}`);
       this.mdDialogRef.close();
     }).catch(() => {
       this.snackBarService.openSnackBar('No such user was found');
+      this.shareListForm.reset();
     });
-  }
-
-  public deleteListOwner(userId: string) {
-    this.listService.deleteListOwner(this.data.listId, userId);
-    this.deleteListOwnerForm.reset();
   }
 
   private configureForm() {
     this.shareListForm = new FormGroup({
       email: new FormControl(null, Validators.required)
-    });
-
-    this.deleteListOwnerForm = new FormGroup({
-      owner: new FormControl(null, Validators.required)
     });
   }
 }
