@@ -13,7 +13,7 @@
 
       <span class="le-list-card__spacer"></span>
 
-      <button md-icon-button (click)="openListOwnersDialog(list.$ref.key)">
+      <button md-icon-button *ngIf="(list | async)?.ownersCount > 1" (click)="openListOwnersDialog(list.$ref.key)">
         <md-icon>group</md-icon>
       </button>
 

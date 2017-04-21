@@ -43,6 +43,10 @@ export class ListService {
   public deleteListOwner(listId: string, userId: string) {
     this.af.database.object(`/usersPerList/${listId}/${userId}`).remove();
     this.af.database.object(`/listsPerUser/${userId}/${listId}`).remove();
+    this.af.database.object(`/lists/${listId}/ownersCount`).$ref
+      .transaction((ownersCount) => {
+        return ownersCount - 1;
+      });
   }
 
   public shareList(listId: string, userEmail: string) {
@@ -51,14 +55,24 @@ export class ListService {
         const userData = user.val();
         if (userData) {
           const userId = userData.uid;
-          const updateObject = {
-            [`/listsPerUser/${userId}/${listId}`]: true,
-            [`/usersPerList/${listId}/${userId}`]: { email: userEmail }
-          };
-          this.af.database.object('/').$ref.update(updateObject);
-          resolve(true);
+          this.af.database.object(`/listsPerUser/${userId}/${listId}`).$ref.once('value').then((list) => {
+            if (list.val() !== null) {
+              reject(`User ${userEmail} already owns the list`);
+            } else {
+              const updateObject = {
+                [`/listsPerUser/${userId}/${listId}`]: true,
+                [`/usersPerList/${listId}/${userId}`]: { email: userEmail }
+              };
+              this.af.database.object('/').$ref.update(updateObject);
+              this.af.database.object(`/lists/${listId}/ownersCount`).$ref
+                .transaction((ownersCount) => {
+                  return ownersCount + 1;
+                });
+              resolve(true);
+            }
+          });
         } else {
-          reject(false);
+          reject('No such user was found');
         }
       });
     });

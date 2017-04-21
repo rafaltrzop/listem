@@ -29,8 +29,8 @@ export class ShareListDialogComponent implements OnInit {
     this.listService.shareList(this.data.listId, userEmail).then(() => {
       this.snackBarService.openSnackBar(`List has been shared with ${userEmail}`);
       this.mdDialogRef.close();
-    }).catch(() => {
-      this.snackBarService.openSnackBar('No such user was found');
+    }).catch((error) => {
+      this.snackBarService.openSnackBar(error);
       this.shareListForm.reset();
     });
   }
