@@ -53,6 +53,7 @@ export class ListService {
     return new Promise((resolve, reject) => {
       this.getUserIdByEmail(userEmail).then((user) => {
         const userData = user.val();
+
         if (userData) {
           const userId = userData.uid;
           this.af.database.object(`/listsPerUser/${userId}/${listId}`).$ref.once('value')
@@ -92,39 +93,74 @@ export class ListService {
       this.af.database.object(`/usersPerList/${listId}`).$ref.once('value')
         .then((userPerList) => {
           const userIds = Object.keys(userPerList.val());
+
           for (let userId of userIds) {
             this.af.database.object(`/listsPerUser/${userId}/${listId}`).remove();
           }
           this.af.database.object(`/usersPerList/${listId}`).remove();
           this.af.database.object(`/lists/${listId}`).remove();
           this.af.database.object(`/listItems/${listId}`).remove();
+
           resolve();
         });
     });
   }
 
-  public observeUserLists() {
+  public observeFilteredUserLists(softDeleted: boolean) {
+    return Observable.create((observer) => {
+      this.observeUserLists().subscribe((userLists) => {
+        let filteredUserLists = [];
+
+        for (let userList of userLists) {
+          userList.subscribe((list) => {
+            if (list.softDeleted === softDeleted) {
+              const addingNewList = !filteredUserLists.some((item) => {
+                return item.$ref.key === list.$key;
+              });
+
+              if (addingNewList) {
+                filteredUserLists.push(userList);
+              }
+            } else {
+              filteredUserLists = filteredUserLists.filter((item) => {
+                return item.$ref.key !== list.$key;
+              });
+            }
+
+            observer.next(filteredUserLists);
+          });
+        }
+      });
+    });
+  }
+
+  private observeUserLists() {
     return Observable.create((observer) => {
       let listsPerUser = this.af.database.list(
         `/listsPerUser/${this.userId}`,
         { preserveSnapshot: true }
       );
-      listsPerUser.subscribe((snapshots) => {
-        let userListIds = [];
-        snapshots.forEach((snapshot) => {
-          userListIds.push(snapshot.key);
+
+      listsPerUser.subscribe((lists) => {
+        let userListsIds = [];
+
+        lists.forEach((list) => {
+          userListsIds.push(list.key);
         });
-        observer.next(this.getUserLists(userListIds.reverse()));
+
+        observer.next(this.getUserLists(userListsIds.reverse()));
       });
     });
   }
 
   private getUserLists(userListIds) {
     let userLists = [];
+
     for (let listId of userListIds) {
       let list = this.af.database.object(`/lists/${listId}`);
       userLists.push(list);
     }
+
     return userLists;
   }
 

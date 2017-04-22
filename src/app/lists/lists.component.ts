@@ -23,19 +23,8 @@ export class ListsComponent implements OnInit {
   ) { }
 
   public ngOnInit() {
-    this.listService.observeUserLists().subscribe((userLists) => {
-      this.userLists = [];
-      for (let userList of userLists) {
-        userList.subscribe((list) => {
-          if (list.softDeleted) {
-            this.userLists = this.userLists.filter((item) => {
-              return item.$ref.key !== list.$key;
-            });
-          } else {
-            this.userLists.push(userList);
-          }
-        });
-      }
+    this.listService.observeFilteredUserLists(false).subscribe((userLists) => {
+      this.userLists = userLists;
     });
   }
 

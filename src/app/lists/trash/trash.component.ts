@@ -20,7 +20,7 @@ export class TrashComponent implements OnInit {
   ) { }
 
   public ngOnInit() {
-    this.listService.observeUserLists().subscribe((userLists) => {
+    this.listService.observeFilteredUserLists(true).subscribe((userLists) => {
       this.userLists = userLists;
     });
   }
