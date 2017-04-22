@@ -56,8 +56,8 @@ export class ListsComponent implements OnInit {
   }
 
   public softDeleteList(listId: string) {
-    this.listService.softDeleteList(listId).then(() => {
-      this.listService.getListName(listId).then((listName) => {
+    this.listService.getListName(listId).then((listName) => {
+      this.listService.softDeleteList(listId).then(() => {
         this.snackBarService.openSnackBar(`List ${listName.val()} has been deleted`, 'UNDO')
           .onAction().subscribe(() => {
             this.listService.restoreList(listId);

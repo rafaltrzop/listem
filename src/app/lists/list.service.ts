@@ -88,14 +88,18 @@ export class ListService {
   }
 
   public hardDeleteList(listId: string) {
-    this.af.database.object(`/usersPerList/${listId}`).$ref.once('value').then((userPerList) => {
-      const userIds = Object.keys(userPerList.val());
-      for (let userId of userIds) {
-        this.af.database.object(`/listsPerUser/${userId}/${listId}`).remove();
-      }
-      this.af.database.object(`/usersPerList/${listId}`).remove();
-      this.af.database.object(`/lists/${listId}`).remove();
-      this.af.database.object(`/listItems/${listId}`).remove();
+    return new Promise((resolve, reject) => {
+      this.af.database.object(`/usersPerList/${listId}`).$ref.once('value')
+        .then((userPerList) => {
+          const userIds = Object.keys(userPerList.val());
+          for (let userId of userIds) {
+            this.af.database.object(`/listsPerUser/${userId}/${listId}`).remove();
+          }
+          this.af.database.object(`/usersPerList/${listId}`).remove();
+          this.af.database.object(`/lists/${listId}`).remove();
+          this.af.database.object(`/listItems/${listId}`).remove();
+          resolve();
+        });
     });
   }
 

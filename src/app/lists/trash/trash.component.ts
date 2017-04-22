@@ -44,6 +44,10 @@ export class TrashComponent implements OnInit {
   }
 
   public hardDeleteList(listId: string) {
-    this.listService.hardDeleteList(listId);
+    this.listService.getListName(listId).then((listName) => {
+      this.listService.hardDeleteList(listId).then(() => {
+        this.snackBarService.openSnackBar(`List ${listName.val()} has been removed`);
+      });
+    });
   }
 }
