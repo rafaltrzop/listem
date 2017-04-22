@@ -7,8 +7,8 @@
 <div class="container">
   <h1>Your lists</h1>
   <template ngFor let-list [ngForOf]="userLists">
-    <md-card class="le-list-card" *ngIf="!(list | async)?.softDeleted">
-    <!--<md-card class="le-list-card" *ngIf="!(list | async)?.softDeleted" [routerLink]="['/lists', (list | async)?.$key]">-->
+    <md-card class="le-list-card">
+      <!--<md-card class="le-list-card" [routerLink]="['/lists', (list | async)?.$key]">-->
       <span [routerLink]="['/lists', list.$ref.key]">{{ (list | async)?.name }}</span>
 
       <span class="le-list-card__spacer"></span>
@@ -36,4 +36,8 @@
       </md-menu>
     </md-card>
   </template>
+
+  <div class="le-spinner">
+    <md-spinner></md-spinner>
+  </div>
 </div>

@@ -6,6 +6,10 @@
   animation: .3s zoomIn;
 }
 
+md-card + .le-spinner {
+  display: none;
+}
+
 @media (min-width: 992px) {
   .le-add-list-item {
     top: 34px;
