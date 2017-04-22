@@ -55,22 +55,23 @@ export class ListService {
         const userData = user.val();
         if (userData) {
           const userId = userData.uid;
-          this.af.database.object(`/listsPerUser/${userId}/${listId}`).$ref.once('value').then((list) => {
-            if (list.val() !== null) {
-              reject(`User ${userEmail} already owns the list`);
-            } else {
-              const updateObject = {
-                [`/listsPerUser/${userId}/${listId}`]: true,
-                [`/usersPerList/${listId}/${userId}`]: { email: userEmail }
-              };
-              this.af.database.object('/').$ref.update(updateObject);
-              this.af.database.object(`/lists/${listId}/ownersCount`).$ref
-                .transaction((ownersCount) => {
-                  return ownersCount + 1;
-                });
-              resolve(true);
-            }
-          });
+          this.af.database.object(`/listsPerUser/${userId}/${listId}`).$ref.once('value')
+            .then((list) => {
+              if (list.val() !== null) {
+                reject(`User ${userEmail} already owns the list`);
+              } else {
+                const updateObject = {
+                  [`/listsPerUser/${userId}/${listId}`]: true,
+                  [`/usersPerList/${listId}/${userId}`]: { email: userEmail }
+                };
+                this.af.database.object('/').$ref.update(updateObject);
+                this.af.database.object(`/lists/${listId}/ownersCount`).$ref
+                  .transaction((ownersCount) => {
+                    return ownersCount + 1;
+                  });
+                resolve(true);
+              }
+            });
         } else {
           reject('No such user was found');
         }

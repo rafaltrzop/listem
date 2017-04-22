@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialog } from '@angular/material'; // TODO: what about shared module?
+import { MdDialog } from '@angular/material';
 
 import { AddListDialogComponent } from './add-list-dialog/add-list-dialog.component';
 import { RenameListDialogComponent } from './rename-list-dialog/rename-list-dialog.component';

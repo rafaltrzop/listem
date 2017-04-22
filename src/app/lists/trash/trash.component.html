@@ -9,17 +9,14 @@
 
       <span class="le-list-card__spacer"></span>
 
-      <!--<button md-button (click)="restoreList(list)">Restore</button>-->
-      <!--<button md-button (click)="hardDeleteList(list)">Delete</button>-->
+      <button md-icon-button *ngIf="(list | async)?.ownersCount > 1" (click)="openListOwnersDialog(list.$ref.key)">
+        <md-icon>group</md-icon>
+      </button>
 
       <button md-icon-button [mdMenuTriggerFor]="menu">
         <md-icon>more_vert</md-icon>
       </button>
       <md-menu #menu="mdMenu">
-        <button md-menu-item>
-          <md-icon>create</md-icon>
-          <span>Rename</span>
-        </button>
         <button md-menu-item (click)="restoreList(list.$ref.key)">
           <md-icon>undo</md-icon>
           <span>Restore</span>
