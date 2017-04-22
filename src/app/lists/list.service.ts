@@ -84,7 +84,7 @@ export class ListService {
   }
 
   public restoreList(listId: string) {
-    this.af.database.object(`/lists/${listId}`).update({ softDeleted: false });
+    return this.af.database.object(`/lists/${listId}`).update({ softDeleted: false });
   }
 
   public hardDeleteList(listId: string) {

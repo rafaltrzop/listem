@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MdDialog } from '@angular/material';
 
 import { ListService } from '../list.service';
+import { SnackBarService } from '../../core/service/snackbar.service';
 import { ListOwnersDialogComponent } from '../list-owners-dialog/list-owners-dialog.component';
 
 @Component({
@@ -14,6 +15,7 @@ export class TrashComponent implements OnInit {
 
   constructor(
     private listService: ListService,
+    private snackBarService: SnackBarService,
     public mdDialog: MdDialog
   ) { }
 
@@ -30,7 +32,15 @@ export class TrashComponent implements OnInit {
   }
 
   public restoreList(listId: string) {
-    this.listService.restoreList(listId);
+    this.listService.restoreList(listId).then(() => {
+      this.listService.getListName(listId).then((listName) => {
+        this.snackBarService.openSnackBar(`List ${listName.val()} has been recovered`, 'UNDO')
+          .onAction().subscribe(() => {
+            this.listService.softDeleteList(listId);
+          }
+        );
+      });
+    });
   }
 
   public hardDeleteList(listId: string) {
