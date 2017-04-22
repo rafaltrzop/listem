@@ -10,12 +10,12 @@
     <meta name="keywords" content="<%= htmlWebpackPlugin.options.keywords %>">
 
     <style>
-      le-app:empty + .loading {
+      le-app:empty + .le-loading-app {
         opacity: 1;
         z-index: 999;
       }
 
-      .loading {
+      .le-loading-app {
         opacity: 0;
         z-index: -1;
         transition:
@@ -32,34 +32,38 @@
         align-items: center;
       }
 
-      .spinner {
+      .le-spinner {
         width: 70px;
         text-align: center;
       }
 
-      .spinner > div {
+      .le-spinner > div {
         width: 18px;
         height: 18px;
         background-color: #fff;
         border-radius: 50%;
         display: inline-block;
-        animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+        animation: bounce 1.4s infinite ease-in-out both;
       }
 
-      .spinner .bounce1 {
+      .le-spinner--purple > div {
+        background-color: #673ab7;
+      }
+
+      .le-spinner .bounce1 {
         animation-delay: -0.32s;
       }
 
-      .spinner .bounce2 {
+      .le-spinner .bounce2 {
         animation-delay: -0.16s;
       }
 
-      @keyframes sk-bouncedelay {
+      @keyframes bounce {
         0%, 80%, 100% {
           transform: scale(0);
         }
         40% {
-          transform: scale(1.0);
+          transform: scale(1);
         }
       }
     </style>
@@ -76,8 +80,8 @@
   <body>
     <le-app></le-app>
 
-    <div class="loading">
-      <div class="spinner">
+    <div class="le-loading-app">
+      <div class="le-spinner">
         <div class="bounce1"></div>
         <div class="bounce2"></div>
         <div class="bounce3"></div>
