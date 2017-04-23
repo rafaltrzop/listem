@@ -52,3 +52,35 @@ md-dialog-actions {
     flex: 1 1 auto;
   }
 }
+
+.le-loading-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.le-no-content {
+  position: fixed;
+  top: calc(50% + 32px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  animation: .8s appear;
+
+  &__icon {
+    height: auto !important;
+    width: auto !important;
+    color: #757575;
+    font-size: 96px;
+  }
+
+  &__message {
+    color: #757575;
+  }
+}
+
+@keyframes appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

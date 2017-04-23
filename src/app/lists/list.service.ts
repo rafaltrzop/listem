@@ -111,24 +111,28 @@ export class ListService {
       this.observeUserLists().subscribe((userLists) => {
         let filteredUserLists = [];
 
-        for (let userList of userLists) {
-          userList.subscribe((list) => {
-            if (list.softDeleted === softDeleted) {
-              const addingNewList = !filteredUserLists.some((item) => {
-                return item.$ref.key === list.$key;
-              });
+        if (userLists.length > 0) {
+          for (let userList of userLists) {
+            userList.subscribe((list) => {
+              if (list.softDeleted === softDeleted) {
+                const addingNewList = !filteredUserLists.some((item) => {
+                  return item.$ref.key === list.$key;
+                });
 
-              if (addingNewList) {
-                filteredUserLists.push(userList);
+                if (addingNewList) {
+                  filteredUserLists.push(userList);
+                }
+              } else {
+                filteredUserLists = filteredUserLists.filter((item) => {
+                  return item.$ref.key !== list.$key;
+                });
               }
-            } else {
-              filteredUserLists = filteredUserLists.filter((item) => {
-                return item.$ref.key !== list.$key;
-              });
-            }
 
-            observer.next(filteredUserLists);
-          });
+              observer.next(filteredUserLists);
+            });
+          }
+        } else {
+          observer.next(filteredUserLists);
         }
       });
     });

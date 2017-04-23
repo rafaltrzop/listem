@@ -14,7 +14,8 @@ import { SnackBarService } from '../core/service/snackbar.service';
   templateUrl: './lists.component.html'
 })
 export class ListsComponent implements OnInit {
-  private userLists = [];
+  public loadingLists = true;
+  public userLists = [];
 
   constructor(
     private listService: ListService,
@@ -25,6 +26,7 @@ export class ListsComponent implements OnInit {
   public ngOnInit() {
     this.listService.observeFilteredUserLists(false).subscribe((userLists) => {
       this.userLists = userLists;
+      this.loadingLists = false;
     });
   }
 

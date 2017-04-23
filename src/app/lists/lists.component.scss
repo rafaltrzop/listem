@@ -6,17 +6,6 @@
   animation: .3s zoomIn;
 }
 
-.le-loading-content {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  md-card + & {
-    display: none;
-  }
-}
-
 @media (min-width: 992px) {
   .le-add-list-item {
     top: 34px;

@@ -11,7 +11,8 @@ import { ListOwnersDialogComponent } from '../list-owners-dialog/list-owners-dia
   templateUrl: './trash.component.html'
 })
 export class TrashComponent implements OnInit {
-  private userLists = [];
+  public loadingLists = true;
+  public userLists = [];
 
   constructor(
     private listService: ListService,
@@ -22,6 +23,7 @@ export class TrashComponent implements OnInit {
   public ngOnInit() {
     this.listService.observeFilteredUserLists(true).subscribe((userLists) => {
       this.userLists = userLists;
+      this.loadingLists = false;
     });
   }
 

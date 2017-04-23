@@ -4,44 +4,53 @@
   <md-icon>add</md-icon>
 </button>
 
-<div class="container">
-  <h1>Your lists</h1>
-  <template ngFor let-list [ngForOf]="userLists">
-    <md-card class="le-list-card">
-      <!--<md-card class="le-list-card" [routerLink]="['/lists', (list | async)?.$key]">-->
-      <span [routerLink]="['/lists', list.$ref.key]">{{ (list | async)?.name }}</span>
-
-      <span class="le-list-card__spacer"></span>
-
-      <button md-icon-button *ngIf="(list | async)?.ownersCount > 1" (click)="openListOwnersDialog(list.$ref.key)">
-        <md-icon>group</md-icon>
-      </button>
-
-      <button md-icon-button [mdMenuTriggerFor]="menu">
-        <md-icon>more_vert</md-icon>
-      </button>
-      <md-menu #menu="mdMenu">
-        <button md-menu-item (click)="openRenameListDialog(list.$ref.key)">
-          <md-icon>create</md-icon>
-          <span>Rename</span>
-        </button>
-        <button md-menu-item (click)="openShareListDialog(list.$ref.key)">
-          <md-icon>share</md-icon>
-          <span>Share</span>
-        </button>
-        <button md-menu-item (click)="softDeleteList(list.$ref.key)">
-          <md-icon>delete</md-icon>
-          <span>Delete</span>
-        </button>
-      </md-menu>
-    </md-card>
-  </template>
-
-  <div class="le-loading-content">
-    <div class="le-spinner le-spinner--purple">
-      <div class="bounce1"></div>
-      <div class="bounce2"></div>
-      <div class="bounce3"></div>
+<div class="container" [ngSwitch]="userLists.length">
+  <div *ngSwitchCase="0">
+    <div class="le-loading-content" *ngIf="loadingLists">
+      <div class="le-spinner le-spinner--purple">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
     </div>
+
+    <div class="le-no-content" *ngIf="!loadingLists">
+      <md-icon class="le-no-content__icon">format_list_bulleted</md-icon>
+      <p class="le-no-content__message">Create your first list</p>
+    </div>
+  </div>
+
+  <div *ngSwitchDefault>
+    <h1>Your lists</h1>
+    <template ngFor let-list [ngForOf]="userLists">
+      <md-card class="le-list-card">
+        <!--<md-card class="le-list-card" [routerLink]="['/lists', (list | async)?.$key]">-->
+        <span [routerLink]="['/lists', list.$ref.key]">{{ (list | async)?.name }}</span>
+
+        <span class="le-list-card__spacer"></span>
+
+        <button md-icon-button *ngIf="(list | async)?.ownersCount > 1" (click)="openListOwnersDialog(list.$ref.key)">
+          <md-icon>group</md-icon>
+        </button>
+
+        <button md-icon-button [mdMenuTriggerFor]="menu">
+          <md-icon>more_vert</md-icon>
+        </button>
+        <md-menu #menu="mdMenu">
+          <button md-menu-item (click)="openRenameListDialog(list.$ref.key)">
+            <md-icon>create</md-icon>
+            <span>Rename</span>
+          </button>
+          <button md-menu-item (click)="openShareListDialog(list.$ref.key)">
+            <md-icon>share</md-icon>
+            <span>Share</span>
+          </button>
+          <button md-menu-item (click)="softDeleteList(list.$ref.key)">
+            <md-icon>delete</md-icon>
+            <span>Delete</span>
+          </button>
+        </md-menu>
+      </md-card>
+    </template>
   </div>
 </div>
