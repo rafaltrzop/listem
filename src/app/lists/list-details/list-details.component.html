@@ -1,6 +1,6 @@
 <le-header></le-header>
 
-<div class="container">
+<div class="container" [ngSwitch]="listItems.length">
   <h1>Add item</h1>
   <form [formGroup]="addListItemForm" (submit)="addListItem()">
     <md-input-container>
@@ -10,30 +10,47 @@
     <button md-raised-button type="submit" [disabled]="addListItemForm.invalid">Add item</button>
   </form>
 
-  <h1>{{ (list | async)?.name }}</h1>
-  <md-card class="le-list-items-card">
-    <md-list>
-      <template ngFor let-item [ngForOf]="listItems | async">
-        <span *ngIf="!item.checked">
-          <md-list-item class="le-list-item">
-            <md-checkbox disableRipple [checked]="item.checked" (click)="checkItem(item.$key)">{{ item.name }}</md-checkbox>
-            <span class="le-list-item__spacer"></span>
-            <md-icon class="le-list-item__delete" (click)="deleteListItem(item.$key)">close</md-icon>
-          </md-list-item>
-          <md-divider></md-divider>
-        </span>
-      </template>
+  <div *ngSwitchCase="0">
+    <div class="le-loading-content" *ngIf="loadingListItems">
+      <div class="le-spinner le-spinner--purple">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </div>
 
-      <template ngFor let-item [ngForOf]="listItems | async" let-last="last">
-        <span *ngIf="item.checked">
-          <md-list-item class="le-list-item">
-            <md-checkbox disableRipple [checked]="item.checked" (click)="uncheckItem(item.$key)">{{ item.name }}</md-checkbox>
-            <span class="le-list-item__spacer"></span>
-            <md-icon class="le-list-item__delete" (click)="deleteListItem(item.$key)">close</md-icon>
-          </md-list-item>
-          <md-divider *ngIf="!last"></md-divider>
-        </span>
-      </template>
-    </md-list>
-  </md-card>
+    <div class="le-no-content" *ngIf="!loadingListItems">
+      <md-icon class="le-no-content__icon">note_add</md-icon>
+      <p class="le-no-content__message">Add an item to the list</p>
+    </div>
+  </div>
+
+  <div *ngSwitchDefault>
+    <h1>{{ (list | async)?.name }}</h1>
+    <md-card class="le-list-items-card">
+      <md-list>
+        <template ngFor let-item [ngForOf]="listItems">
+          <span *ngIf="!item.checked">
+            <md-list-item class="le-list-item">
+              <md-checkbox disableRipple [checked]="item.checked" (click)="checkItem(item.$key)">{{ item.name }}</md-checkbox>
+              <span class="le-list-item__spacer"></span>
+              <md-icon class="le-list-item__delete" (click)="deleteListItem(item.$key)">close</md-icon>
+            </md-list-item>
+            <md-divider></md-divider>
+          </span>
+        </template>
+
+        <template ngFor let-item [ngForOf]="listItems" let-last="last">
+          <span *ngIf="item.checked">
+            <md-list-item class="le-list-item">
+              <md-checkbox disableRipple [checked]="item.checked" (click)="uncheckItem(item.$key)">{{ item.name }}</md-checkbox>
+              <span class="le-list-item__spacer"></span>
+              <md-icon class="le-list-item__delete" (click)="deleteListItem(item.$key)">close</md-icon>
+            </md-list-item>
+            <md-divider *ngIf="!last"></md-divider>
+          </span>
+        </template>
+      </md-list>
+    </md-card>
+  </div>
 </div>

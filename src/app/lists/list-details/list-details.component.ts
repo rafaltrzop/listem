@@ -13,7 +13,8 @@ export class ListDetailsComponent implements OnInit {
   public addListItemForm: FormGroup;
   public listId = this.route.snapshot.params['id']; // TODO: make private?
   public list = this.listDetailsService.getList(this.listId);
-  public listItems = this.listDetailsService.getListItems(this.listId);
+  public loadingListItems = true;
+  public listItems = [];
 
   constructor(
     private listDetailsService: ListDetailsService,
@@ -22,6 +23,10 @@ export class ListDetailsComponent implements OnInit {
 
   public ngOnInit() {
     this.configureForm();
+    this.listDetailsService.getListItems(this.listId).subscribe((listItems) => {
+      this.listItems = listItems;
+      this.loadingListItems = false;
+    });
   }
 
   public addListItem() {
