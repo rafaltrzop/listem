@@ -1,7 +1,7 @@
 <form [formGroup]="renameListForm" (submit)="renameList()">
   <md-dialog-content>
     <md-input-container>
-      <input mdInput type="text" placeholder="List name" formControlName="name">
+      <input mdInput type="text" autocomplete="off" placeholder="List name" formControlName="name">
     </md-input-container>
   </md-dialog-content>
   <md-dialog-actions>
