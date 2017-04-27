@@ -8,6 +8,8 @@ import { CommonModule } from '@angular/common';
 
 import { AuthService } from './service/auth.service';
 import { SnackBarService } from './service/snackbar.service';
+import { LoggedInGuard } from './service/logged-in-guard.service';
+import { LoggedOutGuard } from './service/logged-out-guard.service';
 
 @NgModule({
   imports: [ CommonModule ],
@@ -15,7 +17,9 @@ import { SnackBarService } from './service/snackbar.service';
   exports: [ ],
   providers: [
     AuthService,
-    SnackBarService
+    SnackBarService,
+    LoggedInGuard,
+    LoggedOutGuard
   ]
 })
 export class CoreModule {
@@ -24,7 +28,9 @@ export class CoreModule {
       ngModule: CoreModule,
       providers: [
         AuthService,
-        SnackBarService
+        SnackBarService,
+        LoggedInGuard,
+        LoggedOutGuard
       ]
     };
   }

@@ -28,8 +28,6 @@ import { AppState, InternalStateType } from './app.service';
 import { CoreModule } from './core';
 import { SharedModule } from './shared';
 import { ListsModule } from './lists';
-import { LoggedInGuard } from './logged-in-guard.service';
-import { LoggedOutGuard } from './logged-out-guard.service';
 import { HomeComponent } from './home';
 import { PageNotFoundComponent } from './page-not-found';
 
@@ -51,9 +49,7 @@ const firebaseAuthConfig = {
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
-  AppState,
-  LoggedInGuard,
-  LoggedOutGuard
+  AppState
 ];
 
 type StoreType = {

@@ -1,12 +1,9 @@
 import { Routes } from '@angular/router';
 
-import { LoggedInGuard } from './logged-in-guard.service';
-import { LoggedOutGuard } from './logged-out-guard.service';
+import { LoggedInGuard, LoggedOutGuard } from './core';
 import { HomeComponent } from './home';
 import { ListsComponent, TrashComponent, ListDetailsComponent } from './lists';
 import { PageNotFoundComponent } from './page-not-found';
-
-import { DataResolver } from './app.resolver'; // TODO: remove
 
 export const ROUTES: Routes = [
   {
