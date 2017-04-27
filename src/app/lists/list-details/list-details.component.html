@@ -1,15 +1,10 @@
 <le-header></le-header>
 
+<button md-fab (click)="openAddListItemDialog()" class="le-cta-button">
+  <md-icon>add</md-icon>
+</button>
+
 <div class="container" [ngSwitch]="listItems.length">
-  <h1>Add item</h1>
-  <form [formGroup]="addListItemForm" (submit)="addListItem()">
-    <md-input-container>
-      <input mdInput type="text" autocomplete="off" placeholder="List item" formControlName="name">
-    </md-input-container>
-
-    <button md-raised-button type="submit" [disabled]="addListItemForm.invalid">Add item</button>
-  </form>
-
   <div *ngSwitchCase="0">
     <div class="le-loading-content" *ngIf="loadingListItems">
       <div class="le-spinner le-spinner--purple">

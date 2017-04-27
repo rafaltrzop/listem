@@ -4,7 +4,7 @@ body {
 }
 
 h1 {
-  font-size: 20px; // TODO: adjust
+  font-size: 20px;
 }
 
 md-dialog-actions {
@@ -34,6 +34,14 @@ md-dialog-actions {
     border-right: 7px solid transparent;
     border-top: 7px solid map-get($mat-deep-purple, 500);
   }
+}
+
+.le-cta-button {
+  position: fixed !important;
+  bottom: 34px;
+  right: 34px;
+  z-index: 2;
+  animation: .3s zoomIn;
 }
 
 .le-list-card {
@@ -80,7 +88,18 @@ md-dialog-actions {
   }
 }
 
+@media (min-width: 992px) {
+  .le-cta-button {
+    top: 34px;
+  }
+}
+
 @keyframes appear {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
 }

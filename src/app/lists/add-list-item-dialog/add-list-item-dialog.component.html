@@ -1,0 +1,11 @@
+<form [formGroup]="addListItemForm" (submit)="addListItem()">
+  <md-dialog-content>
+    <md-input-container>
+      <input mdInput type="text" autocomplete="off" placeholder="List item" formControlName="name">
+    </md-input-container>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <button md-button type="submit" [disabled]="addListItemForm.invalid">Add item</button>
+    <button md-button md-dialog-close type="button">Close</button>
+  </md-dialog-actions>
+</form>

@@ -17,7 +17,7 @@ export class TrashComponent implements OnInit {
   constructor(
     private listService: ListService,
     private snackBarService: SnackBarService,
-    public mdDialog: MdDialog
+    private mdDialog: MdDialog
   ) { }
 
   public ngOnInit() {
