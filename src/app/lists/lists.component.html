@@ -23,17 +23,16 @@
   <div *ngSwitchDefault>
     <h1>Your lists</h1>
     <template ngFor let-list [ngForOf]="userLists">
-      <md-card class="le-list-card">
-        <!--<md-card class="le-list-card" [routerLink]="['/lists', (list | async)?.$key]">-->
-        <span [routerLink]="['/lists', list.$ref.key]">{{ (list | async)?.name }}</span>
+      <md-card class="le-list-card" [routerLink]="['/lists', list.$ref.key]">
+        <span>{{ (list | async)?.name }}</span>
 
         <span class="le-list-card__spacer"></span>
 
-        <button md-icon-button *ngIf="(list | async)?.ownersCount > 1" (click)="openListOwnersDialog(list.$ref.key)">
+        <button md-icon-button *ngIf="(list | async)?.ownersCount > 1" (click)="openListOwnersDialog(list.$ref.key); $event.stopPropagation()">
           <md-icon>group</md-icon>
         </button>
 
-        <button md-icon-button [mdMenuTriggerFor]="menu">
+        <button md-icon-button [mdMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
           <md-icon>more_vert</md-icon>
         </button>
         <md-menu #menu="mdMenu">
