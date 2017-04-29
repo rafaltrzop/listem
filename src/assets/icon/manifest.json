@@ -1,0 +1,21 @@
+{
+  "name": "Listem",
+  "short_name": "Listem",
+  "start_url": "/",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/assets/icon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#673ab7",
+  "background_color": "#673ab7",
+  "display": "standalone"
+}
