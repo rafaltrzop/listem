@@ -2,9 +2,9 @@
   <md-dialog-content>
     <p *ngIf="(listOwners | async)?.length === 1">You are the only owner of the list.</p>
     <md-radio-group formControlName="owner">
-      <template ngFor let-owner [ngForOf]="listOwners | async">
+      <ng-template ngFor let-owner [ngForOf]="listOwners | async">
         <md-radio-button disableRipple value="{{ owner.$key }}" *ngIf="owner.email !== currentUserEmail">{{ owner.email }}</md-radio-button>
-      </template>
+      </ng-template>
     </md-radio-group>
   </md-dialog-content>
 

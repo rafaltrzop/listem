@@ -22,7 +22,7 @@
 
   <div *ngSwitchDefault>
     <h1>Your lists</h1>
-    <template ngFor let-list [ngForOf]="userLists">
+    <ng-template ngFor let-list [ngForOf]="userLists">
       <md-card class="le-list-card" [routerLink]="['/lists', list.$ref.key]">
         <span>{{ (list | async)?.name }}</span>
 
@@ -50,6 +50,6 @@
           </button>
         </md-menu>
       </md-card>
-    </template>
+    </ng-template>
   </div>
 </div>

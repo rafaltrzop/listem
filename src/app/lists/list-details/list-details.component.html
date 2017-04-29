@@ -24,7 +24,7 @@
     <h1>{{ (list | async)?.name }}</h1>
     <md-card class="le-list-items-card">
       <md-list>
-        <template ngFor let-item [ngForOf]="listItems">
+        <ng-template ngFor let-item [ngForOf]="listItems">
           <span *ngIf="!item.checked">
             <md-list-item class="le-list-item">
               <md-checkbox disableRipple [checked]="item.checked" (click)="checkItem(item.$key)">{{ item.name }}</md-checkbox>
@@ -33,9 +33,9 @@
             </md-list-item>
             <md-divider></md-divider>
           </span>
-        </template>
+        </ng-template>
 
-        <template ngFor let-item [ngForOf]="listItems" let-last="last">
+        <ng-template ngFor let-item [ngForOf]="listItems" let-last="last">
           <span *ngIf="item.checked">
             <md-list-item class="le-list-item">
               <md-checkbox disableRipple [checked]="item.checked" (click)="uncheckItem(item.$key)">{{ item.name }}</md-checkbox>
@@ -44,7 +44,7 @@
             </md-list-item>
             <md-divider *ngIf="!last"></md-divider>
           </span>
-        </template>
+        </ng-template>
       </md-list>
     </md-card>
   </div>
