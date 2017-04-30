@@ -19,7 +19,7 @@
   <div *ngSwitchDefault>
     <h1>Deleted lists</h1>
     <ng-template ngFor let-list [ngForOf]="userLists">
-      <md-card class="le-list-card" [routerLink]="['/lists', list.$ref.key]">
+      <md-card class="le-list-card" [routerLink]="['/trash', list.$ref.key]">
         <span>{{ (list | async)?.name }}</span>
 
         <span class="le-list-card__spacer"></span>
