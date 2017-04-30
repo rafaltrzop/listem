@@ -28,8 +28,8 @@ const HMR = helpers.hasProcessFlag('hot');
 const AOT = helpers.hasNpmFlag('aot');
 const METADATA = {
   title: 'Listem',
-  description: 'Website description.',
-  keywords: 'keyword1, keyword2, keyword3',
+  description: 'Tame your work, shopping list and whatnot you need to do with Listem task management app.',
+  keywords: 'task management, shopping list, to do list',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
 };
