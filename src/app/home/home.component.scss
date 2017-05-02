@@ -17,15 +17,8 @@
     text-align: center;
     color: rgba(0, 0, 0, .38);
     transition: all .3s;
-    visibility: hidden;
-    opacity: 0;
     &:hover {
       color: #673ab7;
-    }
-
-    &.active {
-      visibility: visible;
-      opacity: 1;
     }
   }
 }

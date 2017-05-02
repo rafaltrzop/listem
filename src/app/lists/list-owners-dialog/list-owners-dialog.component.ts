@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MD_DIALOG_DATA } from '@angular/material';
 
 import { ListService } from '../list.service';
-import { AuthService } from '../../core/service/auth.service';
+import { AuthService } from '../../core';
 
 @Component({
   selector: 'le-list-owners-dialog',

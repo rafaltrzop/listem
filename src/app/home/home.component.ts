@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MdDialog } from '@angular/material';
 
-import { AuthService } from '../core/service/auth.service';
-import { SnackBarService } from '../core/service/snackbar.service';
+import { AuthService, SnackBarService } from '../core';
+import {
+  ResetPasswordDialogComponent
+} from './reset-password-dialog/reset-password-dialog.component';
 
 @Component({
   selector: 'le-home',
@@ -15,12 +18,13 @@ import { SnackBarService } from '../core/service/snackbar.service';
   ]
 })
 export class HomeComponent implements OnInit {
-  public form: FormGroup;
+  public authForm: FormGroup;
 
   constructor(
     private authService: AuthService,
     private snackBarService: SnackBarService,
-    private router: Router
+    private router: Router,
+    private mdDialog: MdDialog
   ) { }
 
   public ngOnInit() {
@@ -28,7 +32,7 @@ export class HomeComponent implements OnInit {
   }
 
   public signUp() {
-    this.authService.signUp(this.form.value.email, this.form.value.password).then(() => {
+    this.authService.signUp(this.authForm.value.email, this.authForm.value.password).then(() => {
       this.logIn();
     }).catch((error) => {
       this.snackBarService.openSnackBar(error.message);
@@ -36,23 +40,19 @@ export class HomeComponent implements OnInit {
   }
 
   public logIn() {
-    this.authService.logIn(this.form.value.email, this.form.value.password).then(() => {
+    this.authService.logIn(this.authForm.value.email, this.authForm.value.password).then(() => {
       this.router.navigate(['lists']);
     }).catch((error) => {
       this.snackBarService.openSnackBar(error.message);
     });
   }
 
-  public resetPassword() {
-    this.authService.resetPassword(this.form.value.email).then(() => {
-      this.snackBarService.openSnackBar('Check your email inbox');
-    }).catch((error) => {
-      this.snackBarService.openSnackBar(error.message);
-    });
+  public openResetPasswordDialog() {
+    this.mdDialog.open(ResetPasswordDialogComponent);
   }
 
   private configureForm() {
-    this.form = new FormGroup({
+    this.authForm = new FormGroup({
       email: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required)
     });

@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 import { ListService } from '../list.service';
-import { SnackBarService } from '../../core/service/snackbar.service';
+import { SnackBarService } from '../../core';
 
 @Component({
   selector: 'le-share-list-dialog',

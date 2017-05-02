@@ -6,7 +6,7 @@ import { RenameListDialogComponent } from './rename-list-dialog/rename-list-dial
 import { ShareListDialogComponent } from './share-list-dialog/share-list-dialog.component';
 import { ListOwnersDialogComponent } from './list-owners-dialog/list-owners-dialog.component';
 import { ListService } from './list.service';
-import { SnackBarService } from '../core/service/snackbar.service';
+import { SnackBarService } from '../core';
 
 @Component({
   selector: 'le-lists',

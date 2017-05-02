@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MdDialog } from '@angular/material';
 
 import { ListService } from '../list.service';
-import { SnackBarService } from '../../core/service/snackbar.service';
+import { SnackBarService } from '../../core';
 import { ListOwnersDialogComponent } from '../list-owners-dialog/list-owners-dialog.component';
 
 @Component({

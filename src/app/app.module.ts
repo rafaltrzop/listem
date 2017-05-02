@@ -28,8 +28,8 @@ import { AppState, InternalStateType } from './app.service';
 
 import { CoreModule } from './core';
 import { SharedModule } from './shared';
+import { HomeModule } from './home';
 import { ListsModule } from './lists';
-import { HomeComponent } from './home';
 import { PageNotFoundComponent } from './page-not-found';
 
 import '../styles/main.scss';
@@ -66,7 +66,6 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
-    HomeComponent,
     PageNotFoundComponent
   ],
   imports: [ // import Angular's modules
@@ -78,6 +77,7 @@ type StoreType = {
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     CoreModule.forRoot(),
     SharedModule,
+    HomeModule,
     ListsModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection

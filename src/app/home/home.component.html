@@ -5,7 +5,7 @@
 </md-toolbar>
 
 <div class="container le-form">
-  <form [formGroup]="form">
+  <form [formGroup]="authForm">
     <div>
       <md-input-container>
         <input mdInput type="email" placeholder="E-mail" formControlName="email">
@@ -19,10 +19,10 @@
     </div>
 
     <div class="le-form__submit-container">
-      <button md-raised-button (click)="logIn()" [disabled]="form.invalid">Log in</button>
-      <button md-raised-button (click)="signUp()" [disabled]="form.invalid">Sign up</button>
+      <button md-raised-button (click)="logIn()" [disabled]="authForm.invalid">Log in</button>
+      <button md-raised-button (click)="signUp()" [disabled]="authForm.invalid">Sign up</button>
     </div>
 
-    <a class="le-form__reset-password" (click)="resetPassword()" [ngClass]="{active: form.value.email}">Forgot password?</a>
+    <a class="le-form__reset-password" (click)="openResetPasswordDialog()">Forgot password?</a>
   </form>
 </div>
