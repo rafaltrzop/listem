@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { MdDialog } from '@angular/material';
 
 import { AddListItemDialogComponent } from '../add-list-item-dialog/add-list-item-dialog.component';
+import {
+  RenameListItemDialogComponent
+} from '../rename-list-item-dialog/rename-list-item-dialog.component';
 import { ListDetailsService } from './list-details.service';
 
 @Component({
@@ -31,8 +34,16 @@ export class ListDetailsComponent implements OnInit {
 
   public openAddListItemDialog() {
     this.mdDialog.open(AddListItemDialogComponent, {
+      data: { listId: this.listId }
+    });
+  }
+
+  public openRenameListItemDialog(itemId: string, itemName: string) {
+    this.mdDialog.open(RenameListItemDialogComponent, {
       data: {
-        listId: this.listId
+        listId: this.listId,
+        itemId,
+        itemName
       }
     });
   }

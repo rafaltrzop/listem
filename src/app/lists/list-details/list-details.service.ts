@@ -13,6 +13,10 @@ export class ListDetailsService {
     this.af.database.list(`/listItems/${listId}`).push(new Item(name));
   }
 
+  public renameListItem(listId: string, itemId: string, itemName: string) {
+    this.af.database.object(`/listItems/${listId}/${itemId}`).update({ name: itemName });
+  }
+
   public deleteListItem(listId: string, itemId: string) {
     this.af.database.object(`/listItems/${listId}/${itemId}`).remove();
   }

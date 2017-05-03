@@ -1,0 +1,11 @@
+<form [formGroup]="renameListItemForm" (submit)="renameListItem()">
+  <md-dialog-content>
+    <md-input-container>
+      <input mdInput type="text" autocomplete="off" placeholder="Item name" formControlName="name">
+    </md-input-container>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <button md-button type="submit" [disabled]="renameListItemForm.invalid || renameListItemForm.value.name === currentListItemName">Rename list</button>
+    <button md-button md-dialog-close type="button">Close</button>
+  </md-dialog-actions>
+</form>

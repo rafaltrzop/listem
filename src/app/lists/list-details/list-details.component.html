@@ -28,6 +28,7 @@
           <span *ngIf="!item.checked">
             <md-list-item class="le-list-item">
               <md-checkbox disableRipple [checked]="item.checked" (click)="checkItem(item.$key)">{{ item.name }}</md-checkbox>
+              <md-icon class="le-list-item__edit" (click)="openRenameListItemDialog(item.$key, item.name)">create</md-icon>
               <span class="le-list-item__spacer"></span>
               <md-icon class="le-list-item__delete" (click)="deleteListItem(item.$key)">close</md-icon>
             </md-list-item>
@@ -39,6 +40,7 @@
           <span *ngIf="item.checked">
             <md-list-item class="le-list-item">
               <md-checkbox disableRipple [checked]="item.checked" (click)="uncheckItem(item.$key)">{{ item.name }}</md-checkbox>
+              <md-icon class="le-list-item__edit" (click)="openRenameListItemDialog(item.$key, item.name)">create</md-icon>
               <span class="le-list-item__spacer"></span>
               <md-icon class="le-list-item__delete" (click)="deleteListItem(item.$key)">close</md-icon>
             </md-list-item>
