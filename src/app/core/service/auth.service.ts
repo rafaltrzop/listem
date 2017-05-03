@@ -24,7 +24,7 @@ export class AuthService {
         uid: user.uid,
         email
       });
-    }, () => { return; });
+    });
 
     return signUp;
   }

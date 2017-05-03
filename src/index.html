@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -69,11 +69,9 @@
     </style>
 
     <% if (webpackConfig.htmlElements.headTags) { %>
-      <!-- Configured Head Tags  -->
       <%= webpackConfig.htmlElements.headTags %>
     <% } %>
 
-    <!-- base url -->
     <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
   </head>
 

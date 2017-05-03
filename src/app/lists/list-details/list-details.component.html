@@ -4,7 +4,7 @@
   <md-icon>add</md-icon>
 </button>
 
-<div class="container" [ngSwitch]="listItems.length">
+<main class="container" [ngSwitch]="listItems.length">
   <div *ngSwitchCase="0">
     <div class="le-loading-content" *ngIf="loadingListItems">
       <div class="le-spinner le-spinner--purple">
@@ -50,4 +50,4 @@
       </md-list>
     </md-card>
   </div>
-</div>
+</main>

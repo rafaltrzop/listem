@@ -14,7 +14,7 @@ import { ListDetailsService } from './list-details.service';
   templateUrl: './list-details.component.html'
 })
 export class ListDetailsComponent implements OnInit {
-  public listId = this.route.snapshot.params['id']; // TODO: make private?
+  public listId = this.route.snapshot.params['id'];
   public list = this.listDetailsService.getList(this.listId);
   public loadingListItems = true;
   public listItems = [];

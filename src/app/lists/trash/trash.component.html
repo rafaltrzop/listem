@@ -1,6 +1,6 @@
 <le-header></le-header>
 
-<div class="container" [ngSwitch]="userLists.length">
+<main class="container" [ngSwitch]="userLists.length">
   <div *ngSwitchCase="0">
     <div class="le-loading-content" *ngIf="loadingLists">
       <div class="le-spinner le-spinner--purple">
@@ -44,4 +44,4 @@
       </md-card>
     </ng-template>
   </div>
-</div>
+</main>
