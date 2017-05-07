@@ -51,6 +51,11 @@ export class HomeComponent implements OnInit {
     this.mdDialog.open(ResetPasswordDialogComponent);
   }
 
+  public hideFooter() {
+    let footer = <HTMLElement>document.querySelector('.le-footer');
+    footer.style.transform = 'translateY(100%)';
+  }
+
   private configureForm() {
     this.authForm = new FormGroup({
       email: new FormControl(null, Validators.required),
