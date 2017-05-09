@@ -1,6 +1,6 @@
 <le-header></le-header>
 
-<main class="container" [ngSwitch]="userLists.length">
+<main class="container le-no-cta-button" [ngSwitch]="userLists.length">
   <div *ngSwitchCase="0">
     <div class="le-loading-content" *ngIf="loadingLists">
       <div class="le-spinner le-spinner--purple">

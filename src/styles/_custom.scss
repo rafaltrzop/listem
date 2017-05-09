@@ -1,6 +1,13 @@
 body {
   background-color: $color-light-gray;
-  padding-top: 64px + 30px;
+  padding-top: 64px + 15px;
+}
+
+main {
+  padding-bottom: 125px;
+  &.le-no-cta-button {
+    padding-bottom: 20px;
+  }
 }
 
 h1 {
@@ -49,6 +56,9 @@ md-dialog-actions {
   display: flex !important;
   align-items: center;
   margin-bottom: 20px;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
   &:hover,
   &:focus {
     outline: none;
@@ -60,6 +70,17 @@ md-dialog-actions {
 
   &__spacer {
     flex: 1 1 auto;
+  }
+
+  button {
+    md-icon {
+      color: $color-gray;
+      transition: color .3s;
+    }
+
+    &:hover md-icon {
+      color: $color-black;
+    }
   }
 }
 
@@ -81,16 +102,27 @@ md-dialog-actions {
   &__icon {
     height: auto !important;
     width: auto !important;
-    color: #757575;
+    color: $color-gray;
     font-size: 96px;
   }
 
   &__message {
-    color: #757575;
+    color: $color-gray;
   }
 }
 
 @media (min-width: 992px) {
+  body {
+    padding-top: 64px + 30px;
+  }
+
+  main {
+    padding-bottom: 99px;
+    &.le-no-cta-button {
+      padding-bottom: 99px;
+    }
+  }
+
   .le-cta-button {
     top: 34px;
   }
