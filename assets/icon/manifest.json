@@ -1,7 +1,7 @@
 {
   "name": "Listem",
   "short_name": "Listem",
-  "start_url": "/",
+  "start_url": "/listem/",
   "orientation": "portrait",
   "icons": [
     {
