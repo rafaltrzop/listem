@@ -9,6 +9,17 @@
     <meta name="description" content="<%= htmlWebpackPlugin.options.description %>">
     <meta name="keywords" content="<%= htmlWebpackPlugin.options.keywords %>">
 
+    <!-- The SPA Hack For GitHub Pages -->
+    <script>
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, '', redirect);
+        }
+      })();
+    </script>
+
     <style>
       le-app:empty + .le-loading-app {
         opacity: 1;

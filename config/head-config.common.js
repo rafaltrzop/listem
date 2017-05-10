@@ -16,8 +16,8 @@
 module.exports = {
   link: [
     /** <link> tags for fonts **/
-    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic' },
-    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' },
+    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic', '=href': false },
+    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons', '=href': false },
 
     /** realfavicongenerator.net **/
     { rel: 'apple-touch-icon', sizes: '180x180', href: 'assets/icon/apple-touch-icon.png' },

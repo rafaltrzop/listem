@@ -1,6 +1,6 @@
 body {
   background-color: $color-light-gray;
-  padding-top: 64px + 15px;
+  padding-top: 64px + 30px;
 }
 
 main {
@@ -112,10 +112,6 @@ md-dialog-actions {
 }
 
 @media (min-width: 992px) {
-  body {
-    padding-top: 64px + 30px;
-  }
-
   main {
     padding-bottom: 99px;
     &.le-no-cta-button {

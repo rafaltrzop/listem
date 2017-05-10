@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
   }
 
   public hideFooter() {
-    let footer = <HTMLElement>document.querySelector('.le-footer');
+    let footer = <HTMLElement> document.querySelector('.le-footer');
     footer.style.transform = 'translateY(100%)';
   }
 
