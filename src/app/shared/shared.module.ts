@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 
+import { NavComponent } from './component/nav/nav.component';
 import { HeaderComponent } from './component/header/header.component';
 
 @NgModule({
@@ -14,12 +15,16 @@ import { HeaderComponent } from './component/header/header.component';
     ReactiveFormsModule,
     MaterialModule
   ],
-  declarations: [ HeaderComponent ],
+  declarations: [
+    NavComponent,
+    HeaderComponent
+  ],
   exports: [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
     MaterialModule,
+    NavComponent,
     HeaderComponent
   ]
 })

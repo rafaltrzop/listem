@@ -1,7 +1,8 @@
-.le-nav {
-  display: flex;
+.le-header {
+  text-align: center;
 
-  &__spacer {
-    flex: 1 1 auto;
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 }

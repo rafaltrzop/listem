@@ -1,0 +1,20 @@
+<md-toolbar color="primary" class="le-toolbar">
+  <nav class="container le-nav">
+    <button md-button disableRipple routerLink="/lists" routerLinkActive="active">
+      <md-icon>format_list_bulleted</md-icon>
+      <span>Lists</span>
+    </button>
+
+    <button md-button disableRipple routerLink="/trash" routerLinkActive="active">
+      <md-icon>delete</md-icon>
+      <span>Trash</span>
+    </button>
+
+    <span class="le-nav__spacer"></span>
+
+    <button md-button disableRipple (click)="logOut()">
+      <md-icon>power_settings_new</md-icon>
+      <span>Log out</span>
+    </button>
+  </nav>
+</md-toolbar>
