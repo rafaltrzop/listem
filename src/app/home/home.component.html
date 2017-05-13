@@ -1,7 +1,9 @@
 <le-header></le-header>
 
-<main class="container le-form">
-  <form [formGroup]="authForm">
+<main class="container le-no-cta-button le-home">
+  <p class="le-home__claim">Tame your work, shopping list and whatnot you need to do with Listem task management app.</p>
+
+  <form class="le-form" [formGroup]="authForm">
     <div>
       <md-input-container>
         <input mdInput type="email" placeholder="E-mail" formControlName="email">
@@ -18,9 +20,9 @@
       <button md-raised-button (click)="logIn()" [disabled]="authForm.invalid">Log in</button>
       <button md-raised-button (click)="signUp()" [disabled]="authForm.invalid">Sign up</button>
     </div>
-
-    <a class="le-form__reset-password" (click)="openResetPasswordDialog()">Forgot password?</a>
   </form>
+
+  <a class="le-home__reset-password" (click)="openResetPasswordDialog()">Forgot password?</a>
 </main>
 
 <footer class="le-footer" (click)="hideFooter()">
