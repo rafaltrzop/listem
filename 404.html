@@ -10,14 +10,6 @@
       sessionStorage.redirect = location.href;
     </script>
 
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/listem/service-worker.js');
-        });
-      }
-    </script>
-
     <meta http-equiv="refresh" content="0;URL='/listem'">
   </head>
 
