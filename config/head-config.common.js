@@ -36,6 +36,6 @@ module.exports = {
     { name: 'mobile-web-app-capable', content: 'yes' },
 
     { name: 'apple-mobile-web-app-capable', content: 'yes' },
-    { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
+    { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }
   ]
 };

@@ -270,6 +270,7 @@ module.exports = function (options) {
         { from: 'src/assets', to: 'assets' },
         { from: 'src/meta' },
         { from: 'src/404.html' },
+        { from: 'src/service-worker.js' },
         { from: 'src/.htaccess' }
       ]),
 
