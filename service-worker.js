@@ -5,7 +5,8 @@ self.addEventListener('install', function(e) {
     caches.open(CACHE_NAME).then(function(cache) {
       return cache.addAll([
         'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic',
-        'https://fonts.googleapis.com/icon?family=Material+Icons'
+        'https://fonts.googleapis.com/icon?family=Material+Icons',
+        '/listem/404.html'
       ]);
     })
   );
