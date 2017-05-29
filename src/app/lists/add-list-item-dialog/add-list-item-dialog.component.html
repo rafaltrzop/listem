@@ -1,7 +1,7 @@
 <form [formGroup]="addListItemForm" (submit)="addListItem()">
   <md-dialog-content>
     <md-input-container>
-      <input mdInput type="text" autocomplete="off" placeholder="Item name" formControlName="name">
+      <input mdInput type="text" autocomplete="off" autocapitalize="off" placeholder="Item name" formControlName="name">
     </md-input-container>
   </md-dialog-content>
   <md-dialog-actions>
