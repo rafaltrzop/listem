@@ -28,9 +28,16 @@
           <span *ngIf="!item.checked">
             <md-list-item class="le-list-item">
               <md-checkbox disableRipple [checked]="item.checked" (click)="checkItem(item.$key)">{{ item.name }}</md-checkbox>
-              <md-icon class="le-list-item__edit" (click)="openRenameListItemDialog(item.$key, item.name)">create</md-icon>
+
+              <button class="le-list-item__edit-button" (click)="openRenameListItemDialog(item.$key, item.name)">
+                <md-icon class="le-list-item__edit">create</md-icon>
+              </button>
+
               <span class="le-list-item__spacer"></span>
-              <md-icon class="le-list-item__delete" (click)="deleteListItem(item.$key)">close</md-icon>
+
+              <button class="le-list-item__delete-button" (click)="deleteListItem(item.$key)">
+                <md-icon class="le-list-item__delete">close</md-icon>
+              </button>
             </md-list-item>
             <md-divider></md-divider>
           </span>
@@ -40,9 +47,16 @@
           <span *ngIf="item.checked">
             <md-list-item class="le-list-item">
               <md-checkbox disableRipple [checked]="item.checked" (click)="uncheckItem(item.$key)">{{ item.name }}</md-checkbox>
-              <md-icon class="le-list-item__edit" (click)="openRenameListItemDialog(item.$key, item.name)">create</md-icon>
+
+              <button class="le-list-item__edit-button" (click)="openRenameListItemDialog(item.$key, item.name)">
+                <md-icon class="le-list-item__edit">create</md-icon>
+              </button>
+
               <span class="le-list-item__spacer"></span>
-              <md-icon class="le-list-item__delete" (click)="deleteListItem(item.$key)">close</md-icon>
+
+              <button class="le-list-item__delete-button" (click)="deleteListItem(item.$key)">
+                <md-icon class="le-list-item__delete">close</md-icon>
+              </button>
             </md-list-item>
             <md-divider *ngIf="!last"></md-divider>
           </span>

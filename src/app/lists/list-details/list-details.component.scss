@@ -7,11 +7,28 @@
     flex: 1 1 auto;
   }
 
+  &__edit-button {
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin-left: 8px;
+    &:focus {
+      outline: none;
+    }
+
+    &:hover .le-list-item__edit {
+      color: #000;
+    }
+
+    &:focus .le-list-item__edit {
+      opacity: 1;
+    }
+  }
+
   &__edit {
     opacity: 0;
-    margin-left: 8px;
     color: #757575;
-    cursor: pointer;
     transition:
       opacity .2s,
       color .3s;
@@ -19,20 +36,24 @@
 
   &:hover &__edit {
     opacity: 1;
-    &:hover {
-      color: #000;
+  }
+
+  &__delete-button {
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+    &:hover .le-list-item__delete,
+    &:focus .le-list-item__delete {
+      color: red;
     }
   }
 
   &__delete {
     color: #757575;
-    cursor: pointer;
-    transition:
-      opacity .2s,
-      color .3s;
-  }
-
-  &:hover &__delete:hover {
-    color: red;
+    transition: color .3s;
   }
 }
