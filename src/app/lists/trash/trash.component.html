@@ -19,29 +19,31 @@
   <div *ngSwitchDefault>
     <h1>Deleted lists</h1>
     <ng-template ngFor let-list [ngForOf]="userLists">
-      <md-card class="le-list-card" [routerLink]="['/trash', list.$ref.key]">
-        <span>{{ (list | async)?.name }}</span>
+      <button class="le-list-card" [routerLink]="['/trash', list.$ref.key]">
+        <md-card class="le-list-card__content">
+          <span>{{ (list | async)?.name }}</span>
 
-        <span class="le-list-card__spacer"></span>
+          <span class="le-list-card__spacer"></span>
 
-        <button md-icon-button *ngIf="(list | async)?.ownersCount > 1" (click)="openListOwnersDialog(list.$ref.key); $event.stopPropagation()">
-          <md-icon>group</md-icon>
-        </button>
-
-        <button md-icon-button [mdMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
-          <md-icon>more_vert</md-icon>
-        </button>
-        <md-menu #menu="mdMenu">
-          <button md-menu-item (click)="restoreList(list.$ref.key)">
-            <md-icon>undo</md-icon>
-            <span>Restore</span>
+          <button md-icon-button *ngIf="(list | async)?.ownersCount > 1" (click)="openListOwnersDialog(list.$ref.key); $event.stopPropagation()">
+            <md-icon>group</md-icon>
           </button>
-          <button md-menu-item (click)="hardDeleteList(list.$ref.key)">
-            <md-icon>close</md-icon>
-            <span>Remove</span>
+
+          <button md-icon-button [mdMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
+            <md-icon>more_vert</md-icon>
           </button>
-        </md-menu>
-      </md-card>
+          <md-menu #menu="mdMenu">
+            <button md-menu-item (click)="restoreList(list.$ref.key)">
+              <md-icon>undo</md-icon>
+              <span>Restore</span>
+            </button>
+            <button md-menu-item (click)="hardDeleteList(list.$ref.key)">
+              <md-icon>close</md-icon>
+              <span>Remove</span>
+            </button>
+          </md-menu>
+        </md-card>
+      </button>
     </ng-template>
   </div>
 </main>
