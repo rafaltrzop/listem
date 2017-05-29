@@ -52,11 +52,15 @@ export class ListDetailsComponent implements OnInit {
     this.listDetailsService.deleteListItem(this.listId, itemId);
   }
 
-  public checkItem(itemId: string) {
-    this.listDetailsService.toggleItem(this.listId, itemId, true);
+  public checkItem(event, itemId: string) {
+    if (event.checked) {
+      this.listDetailsService.toggleItem(this.listId, itemId, true);
+    }
   }
 
-  public uncheckItem(itemId: string) {
-    this.listDetailsService.toggleItem(this.listId, itemId, false);
+  public uncheckItem(event, itemId: string) {
+    if (!event.checked) {
+      this.listDetailsService.toggleItem(this.listId, itemId, false);
+    }
   }
 }

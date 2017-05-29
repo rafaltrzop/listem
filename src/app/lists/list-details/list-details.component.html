@@ -27,7 +27,7 @@
         <ng-template ngFor let-item [ngForOf]="listItems">
           <span *ngIf="!item.checked">
             <md-list-item class="le-list-item">
-              <md-checkbox disableRipple [checked]="item.checked" (click)="checkItem(item.$key)">{{ item.name }}</md-checkbox>
+              <md-checkbox disableRipple [checked]="item.checked" (change)="checkItem($event, item.$key)">{{ item.name }}</md-checkbox>
 
               <button class="le-list-item__edit-button" (click)="openRenameListItemDialog(item.$key, item.name)">
                 <md-icon class="le-list-item__edit">create</md-icon>
@@ -46,7 +46,7 @@
         <ng-template ngFor let-item [ngForOf]="listItems" let-last="last">
           <span *ngIf="item.checked">
             <md-list-item class="le-list-item">
-              <md-checkbox disableRipple [checked]="item.checked" (click)="uncheckItem(item.$key)">{{ item.name }}</md-checkbox>
+              <md-checkbox disableRipple [checked]="item.checked" (change)="uncheckItem($event, item.$key)">{{ item.name }}</md-checkbox>
 
               <button class="le-list-item__edit-button" (click)="openRenameListItemDialog(item.$key, item.name)">
                 <md-icon class="le-list-item__edit">create</md-icon>
