@@ -23,35 +23,33 @@
   <div *ngSwitchDefault>
     <h1>Your lists</h1>
     <ng-template ngFor let-list [ngForOf]="userLists">
-      <button class="le-list-card" [routerLink]="['/lists', list.$ref.key]">
-        <md-card class="le-list-card__content">
-          <span>{{ (list | async)?.name }}</span>
+      <md-card class="le-list-card" role="button" tabindex="0" (click)="openList($event, list.$ref.key)" (keyup)="openList($event, list.$ref.key)">
+        <span>{{ (list | async)?.name }}</span>
 
-          <span class="le-list-card__spacer"></span>
+        <span class="le-list-card__spacer"></span>
 
-          <button md-icon-button *ngIf="(list | async)?.ownersCount > 1" (click)="openListOwnersDialog(list.$ref.key); $event.stopPropagation()">
-            <md-icon>group</md-icon>
+        <button md-icon-button *ngIf="(list | async)?.ownersCount > 1" (click)="openListOwnersDialog(list.$ref.key); $event.stopPropagation()">
+          <md-icon>group</md-icon>
+        </button>
+
+        <button md-icon-button [mdMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
+          <md-icon>more_vert</md-icon>
+        </button>
+        <md-menu #menu="mdMenu">
+          <button md-menu-item (click)="openRenameListDialog(list.$ref.key)">
+            <md-icon>create</md-icon>
+            <span>Rename</span>
           </button>
-
-          <button md-icon-button [mdMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
-            <md-icon>more_vert</md-icon>
+          <button md-menu-item (click)="openShareListDialog(list.$ref.key)">
+            <md-icon>share</md-icon>
+            <span>Share</span>
           </button>
-          <md-menu #menu="mdMenu">
-            <button md-menu-item (click)="openRenameListDialog(list.$ref.key)">
-              <md-icon>create</md-icon>
-              <span>Rename</span>
-            </button>
-            <button md-menu-item (click)="openShareListDialog(list.$ref.key)">
-              <md-icon>share</md-icon>
-              <span>Share</span>
-            </button>
-            <button md-menu-item (click)="softDeleteList(list.$ref.key)">
-              <md-icon>delete</md-icon>
-              <span>Delete</span>
-            </button>
-          </md-menu>
-        </md-card>
-      </button>
+          <button md-menu-item (click)="softDeleteList(list.$ref.key)">
+            <md-icon>delete</md-icon>
+            <span>Delete</span>
+          </button>
+        </md-menu>
+      </md-card>
     </ng-template>
   </div>
 </main>

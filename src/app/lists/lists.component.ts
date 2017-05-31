@@ -30,6 +30,10 @@ export class ListsComponent implements OnInit {
     });
   }
 
+  public openList(event, listId: string) {
+    this.listService.openList(event, listId);
+  }
+
   public openAddListDialog() {
     this.mdDialog.open(AddListDialogComponent);
   }

@@ -27,6 +27,10 @@ export class TrashComponent implements OnInit {
     });
   }
 
+  public openList(event, listId: string) {
+    this.listService.openList(event, listId);
+  }
+
   public openListOwnersDialog(listId: string) {
     this.mdDialog.open(ListOwnersDialogComponent, {
       data: { listId }

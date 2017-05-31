@@ -53,26 +53,16 @@ md-dialog-actions {
 }
 
 .le-list-card {
-  padding: 0;
-  border: none;
-  background: none;
-  width: 100%;
+  display: flex !important;
+  align-items: center;
   cursor: pointer;
   margin-bottom: 20px;
   &:last-of-type {
     margin-bottom: 0;
   }
+  &:hover,
   &:focus {
     outline: none;
-  }
-
-  &__content {
-    display: flex !important;
-    align-items: center;
-  }
-
-  &:hover &__content,
-  &:focus &__content {
     box-shadow:
       0 4px 5px -2px rgba(0, 0, 0, .2),
       0 7px 10px 1px rgba(0, 0, 0, .14),

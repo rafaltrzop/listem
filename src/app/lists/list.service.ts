@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { AngularFire } from 'angularfire2';
 import { Observable } from 'rxjs/Observable';
 
@@ -12,8 +13,18 @@ export class ListService {
 
   constructor(
     private af: AngularFire,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
+
+  public openList(event, listId: string) {
+    const ENTER = 13;
+    const SPACE = 32;
+
+    if (event.type === 'click' || event.keyCode === ENTER || event.keyCode === SPACE) {
+      this.router.navigate([this.router.url, listId]);
+    }
+  }
 
   public addList(listName: string) {
     const listId = this.af.database.list('/lists').push(new List(listName)).key;
