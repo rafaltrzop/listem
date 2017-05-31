@@ -109,6 +109,9 @@ md-dialog-actions {
   transform: translate(-50%, -50%);
   text-align: center;
   animation: .8s appear;
+  &--interactive {
+    cursor: pointer;
+  }
 
   &__icon {
     height: auto !important;
@@ -118,6 +121,7 @@ md-dialog-actions {
   }
 
   &__message {
+    margin-bottom: 0;
     color: $color-gray;
   }
 }

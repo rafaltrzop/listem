@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="le-no-content" *ngIf="!loadingLists">
+    <div class="le-no-content le-no-content--interactive" *ngIf="!loadingLists" (click)="openAddListDialog()">
       <md-icon class="le-no-content__icon">format_list_bulleted</md-icon>
       <p class="le-no-content__message">Create your first list</p>
     </div>
