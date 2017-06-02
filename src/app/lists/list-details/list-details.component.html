@@ -22,14 +22,15 @@
 
   <div *ngSwitchDefault>
     <h1>{{ (list | async)?.name }}</h1>
+
     <md-card class="le-list-items-card">
       <md-list>
         <ng-template ngFor let-item [ngForOf]="listItems">
-          <span *ngIf="!item.checked">
+          <div *ngIf="!item.checked">
             <md-list-item class="le-list-item">
               <md-checkbox disableRipple [checked]="item.checked" (change)="checkItem($event, item.$key)">{{ item.name }}</md-checkbox>
 
-              <button class="le-list-item__edit-button" (click)="openRenameListItemDialog(item.$key, item.name)">
+              <button class="le-list-item__edit-button" (click)="openRenameListItemDialog(item.$key, item.name, item.description)">
                 <md-icon class="le-list-item__edit">create</md-icon>
               </button>
 
@@ -39,16 +40,19 @@
                 <md-icon class="le-list-item__delete">close</md-icon>
               </button>
             </md-list-item>
+
+            <p class="le-list-item__desc" *ngIf="item.description">{{ item.description }}</p>
+
             <md-divider></md-divider>
-          </span>
+          </div>
         </ng-template>
 
         <ng-template ngFor let-item [ngForOf]="listItems" let-last="last">
-          <span *ngIf="item.checked">
+          <div *ngIf="item.checked">
             <md-list-item class="le-list-item">
               <md-checkbox disableRipple [checked]="item.checked" (change)="uncheckItem($event, item.$key)">{{ item.name }}</md-checkbox>
 
-              <button class="le-list-item__edit-button" (click)="openRenameListItemDialog(item.$key, item.name)">
+              <button class="le-list-item__edit-button" (click)="openRenameListItemDialog(item.$key, item.name, item.description)">
                 <md-icon class="le-list-item__edit">create</md-icon>
               </button>
 
@@ -58,8 +62,11 @@
                 <md-icon class="le-list-item__delete">close</md-icon>
               </button>
             </md-list-item>
+
+            <p class="le-list-item__desc" *ngIf="item.description">{{ item.description }}</p>
+
             <md-divider *ngIf="!last"></md-divider>
-          </span>
+          </div>
         </ng-template>
       </md-list>
     </md-card>

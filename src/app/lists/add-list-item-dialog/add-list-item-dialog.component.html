@@ -3,7 +3,14 @@
     <md-input-container>
       <input mdInput type="text" autocomplete="off" autocapitalize="off" placeholder="Item name" formControlName="name">
     </md-input-container>
+
+    <br>
+
+    <md-input-container>
+      <textarea mdInput mdTextareaAutosize mdAutosizeMinRows="4" autocomplete="off" placeholder="Description" formControlName="description"></textarea>
+    </md-input-container>
   </md-dialog-content>
+
   <md-dialog-actions>
     <button md-button type="submit" [disabled]="addListItemForm.invalid">Add item</button>
     <button md-button md-dialog-close type="button">Close</button>

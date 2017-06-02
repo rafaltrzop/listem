@@ -6,7 +6,7 @@ import { ListDetailsService } from '../list-details/list-details.service';
 
 @Component({
   selector: 'le-add-list-item-dialog',
-  styleUrls: [ './add-list-item-dialog.component.css' ],
+  styleUrls: [ './add-list-item-dialog.component.scss' ],
   templateUrl: './add-list-item-dialog.component.html'
 })
 export class AddListItemDialogComponent implements OnInit {
@@ -23,13 +23,18 @@ export class AddListItemDialogComponent implements OnInit {
   }
 
   public addListItem() {
-    this.listDetailsService.addListItem(this.data.listId, this.addListItemForm.value.name);
+    this.listDetailsService.addListItem(
+      this.data.listId,
+      this.addListItemForm.value.name,
+      this.addListItemForm.value.description
+    );
     this.mdDialogRef.close();
   }
 
   private configureForm() {
     this.addListItemForm = new FormGroup({
-      name: new FormControl(null, Validators.required)
+      name: new FormControl(null, Validators.required),
+      description: new FormControl(null),
     });
   }
 }

@@ -9,12 +9,15 @@ export class ListDetailsService {
     private af: AngularFire
   ) { }
 
-  public addListItem(listId: string, name: string) {
-    this.af.database.list(`/listItems/${listId}`).push(new Item(name));
+  public addListItem(listId: string, name: string, description: string) {
+    this.af.database.list(`/listItems/${listId}`).push(new Item(name, description));
   }
 
-  public renameListItem(listId: string, itemId: string, itemName: string) {
-    this.af.database.object(`/listItems/${listId}/${itemId}`).update({ name: itemName });
+  public renameListItem(listId: string, itemId: string, itemName: string, itemDescription: string) {
+    this.af.database.object(`/listItems/${listId}/${itemId}`).update({
+      name: itemName,
+      description: itemDescription
+    });
   }
 
   public deleteListItem(listId: string, itemId: string) {

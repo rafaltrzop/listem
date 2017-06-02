@@ -38,12 +38,13 @@ export class ListDetailsComponent implements OnInit {
     });
   }
 
-  public openRenameListItemDialog(itemId: string, itemName: string) {
+  public openRenameListItemDialog(itemId: string, itemName: string, itemDescription: string) {
     this.mdDialog.open(RenameListItemDialogComponent, {
       data: {
         listId: this.listId,
         itemId,
-        itemName
+        itemName,
+        itemDescription
       }
     });
   }
