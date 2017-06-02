@@ -1,4 +1,4 @@
-<form [formGroup]="renameListItemForm" (submit)="renameListItem()">
+<form [formGroup]="editListItemForm" (submit)="editListItem()">
   <md-dialog-content>
     <md-input-container>
       <input mdInput type="text" autocomplete="off" placeholder="Item name" formControlName="name">
@@ -12,7 +12,7 @@
   </md-dialog-content>
 
   <md-dialog-actions>
-    <button md-button type="submit" [disabled]="renameListItemForm.invalid || (renameListItemForm.value.name === currentListItemName && renameListItemForm.value.description === currentListItemDescription)">Save item</button>
+    <button md-button type="submit" [disabled]="editListItemForm.invalid || (editListItemForm.value.name === currentListItemName && editListItemForm.value.description === currentListItemDescription)">Save item</button>
     <button md-button md-dialog-close type="button">Close</button>
   </md-dialog-actions>
 </form>

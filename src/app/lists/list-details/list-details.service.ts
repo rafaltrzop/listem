@@ -13,7 +13,7 @@ export class ListDetailsService {
     this.af.database.list(`/listItems/${listId}`).push(new Item(name, description));
   }
 
-  public renameListItem(listId: string, itemId: string, itemName: string, itemDescription: string) {
+  public editListItem(listId: string, itemId: string, itemName: string, itemDescription: string) {
     this.af.database.object(`/listItems/${listId}/${itemId}`).update({
       name: itemName,
       description: itemDescription

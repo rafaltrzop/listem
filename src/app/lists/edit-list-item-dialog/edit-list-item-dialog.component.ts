@@ -5,17 +5,17 @@ import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { ListDetailsService } from '../list-details/list-details.service';
 
 @Component({
-  selector: 'le-rename-list-item-dialog',
-  styleUrls: [ './rename-list-item-dialog.component.scss' ],
-  templateUrl: './rename-list-item-dialog.component.html'
+  selector: 'le-edit-list-item-dialog',
+  styleUrls: [ './edit-list-item-dialog.component.scss' ],
+  templateUrl: './edit-list-item-dialog.component.html'
 })
-export class RenameListItemDialogComponent implements OnInit {
-  public renameListItemForm: FormGroup;
+export class EditListItemDialogComponent implements OnInit {
+  public editListItemForm: FormGroup;
   public currentListItemName = this.data.itemName;
   public currentListItemDescription = this.data.itemDescription;
 
   constructor(
-    private mdDialogRef: MdDialogRef<RenameListItemDialogComponent>,
+    private mdDialogRef: MdDialogRef<EditListItemDialogComponent>,
     @Inject(MD_DIALOG_DATA) private data: {
       listId: string,
       itemId: string,
@@ -29,18 +29,18 @@ export class RenameListItemDialogComponent implements OnInit {
     this.configureForm();
   }
 
-  public renameListItem() {
-    this.listDetailsService.renameListItem(
+  public editListItem() {
+    this.listDetailsService.editListItem(
       this.data.listId,
       this.data.itemId,
-      this.renameListItemForm.value.name,
-      this.renameListItemForm.value.description
+      this.editListItemForm.value.name,
+      this.editListItemForm.value.description
     );
     this.mdDialogRef.close();
   }
 
   private configureForm() {
-    this.renameListItemForm = new FormGroup({
+    this.editListItemForm = new FormGroup({
       name: new FormControl(this.data.itemName, Validators.required),
       description: new FormControl(this.data.itemDescription)
     });

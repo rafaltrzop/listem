@@ -4,8 +4,8 @@ import { MdDialog } from '@angular/material';
 
 import { AddListItemDialogComponent } from '../add-list-item-dialog/add-list-item-dialog.component';
 import {
-  RenameListItemDialogComponent
-} from '../rename-list-item-dialog/rename-list-item-dialog.component';
+  EditListItemDialogComponent
+} from '../edit-list-item-dialog/edit-list-item-dialog.component';
 import { ListDetailsService } from './list-details.service';
 
 @Component({
@@ -38,8 +38,8 @@ export class ListDetailsComponent implements OnInit {
     });
   }
 
-  public openRenameListItemDialog(itemId: string, itemName: string, itemDescription: string) {
-    this.mdDialog.open(RenameListItemDialogComponent, {
+  public openEditListItemDialog(itemId: string, itemName: string, itemDescription: string) {
+    this.mdDialog.open(EditListItemDialogComponent, {
       data: {
         listId: this.listId,
         itemId,

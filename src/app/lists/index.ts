@@ -4,7 +4,7 @@ export * from './trash/trash.component';
 export * from './list-details/list-details.component';
 export * from './add-list-dialog/add-list-dialog.component';
 export * from './add-list-item-dialog/add-list-item-dialog.component';
-export * from './rename-list-item-dialog/rename-list-item-dialog.component';
+export * from './edit-list-item-dialog/edit-list-item-dialog.component';
 export * from './list-owners-dialog/list-owners-dialog.component';
 export * from './rename-list-dialog/rename-list-dialog.component';
 export * from './share-list-dialog/share-list-dialog.component';

@@ -30,7 +30,7 @@
             <md-list-item class="le-list-item">
               <md-checkbox disableRipple [checked]="item.checked" (change)="checkItem($event, item.$key)">{{ item.name }}</md-checkbox>
 
-              <button class="le-list-item__edit-button" (click)="openRenameListItemDialog(item.$key, item.name, item.description)">
+              <button class="le-list-item__edit-button" (click)="openEditListItemDialog(item.$key, item.name, item.description)">
                 <md-icon class="le-list-item__edit">create</md-icon>
               </button>
 
@@ -52,7 +52,7 @@
             <md-list-item class="le-list-item">
               <md-checkbox disableRipple [checked]="item.checked" (change)="uncheckItem($event, item.$key)">{{ item.name }}</md-checkbox>
 
-              <button class="le-list-item__edit-button" (click)="openRenameListItemDialog(item.$key, item.name, item.description)">
+              <button class="le-list-item__edit-button" (click)="openEditListItemDialog(item.$key, item.name, item.description)">
                 <md-icon class="le-list-item__edit">create</md-icon>
               </button>
 

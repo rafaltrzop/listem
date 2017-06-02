@@ -10,8 +10,8 @@ import { ShareListDialogComponent } from './share-list-dialog/share-list-dialog.
 import { ListOwnersDialogComponent } from './list-owners-dialog/list-owners-dialog.component';
 import { AddListItemDialogComponent } from './add-list-item-dialog/add-list-item-dialog.component';
 import {
-  RenameListItemDialogComponent
-} from './rename-list-item-dialog/rename-list-item-dialog.component';
+  EditListItemDialogComponent
+} from './edit-list-item-dialog/edit-list-item-dialog.component';
 import { ListService } from './list.service';
 import { ListDetailsService } from './list-details/list-details.service';
 
@@ -26,7 +26,7 @@ import { ListDetailsService } from './list-details/list-details.service';
     ShareListDialogComponent,
     ListOwnersDialogComponent,
     AddListItemDialogComponent,
-    RenameListItemDialogComponent
+    EditListItemDialogComponent
   ],
   entryComponents: [
     AddListDialogComponent,
@@ -34,7 +34,7 @@ import { ListDetailsService } from './list-details/list-details.service';
     ShareListDialogComponent,
     ListOwnersDialogComponent,
     AddListItemDialogComponent,
-    RenameListItemDialogComponent
+    EditListItemDialogComponent
   ],
   exports: [ ],
   providers: [
