@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="le-no-content" *ngIf="!loadingListItems">
+    <div class="le-no-content le-no-content--interactive" *ngIf="!loadingListItems" (click)="openAddListItemDialog()">
       <md-icon class="le-no-content__icon">note_add</md-icon>
       <p class="le-no-content__message">Add an item to the list</p>
     </div>
