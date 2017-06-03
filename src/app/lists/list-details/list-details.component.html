@@ -47,7 +47,7 @@
           </div>
         </ng-template>
 
-        <ng-template ngFor let-item [ngForOf]="listItems" let-last="last">
+        <ng-template ngFor let-item [ngForOf]="listItems">
           <div *ngIf="item.checked">
             <md-list-item class="le-list-item">
               <md-checkbox disableRipple [checked]="item.checked" (change)="uncheckItem($event, item.$key)">{{ item.name }}</md-checkbox>
@@ -65,7 +65,7 @@
 
             <p class="le-list-item__desc" *ngIf="item.description">{{ item.description }}</p>
 
-            <md-divider *ngIf="!last"></md-divider>
+            <md-divider></md-divider>
           </div>
         </ng-template>
       </md-list>
