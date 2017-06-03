@@ -5,6 +5,9 @@ import { HomeComponent } from './home.component';
 import {
   ResetPasswordDialogComponent
 } from './reset-password-dialog/reset-password-dialog.component';
+import {
+  AboutAppDialogComponent
+} from './about-app-dialog/about-app-dialog.component';
 
 @NgModule({
   imports: [
@@ -12,10 +15,12 @@ import {
   ],
   declarations: [
     HomeComponent,
-    ResetPasswordDialogComponent
+    ResetPasswordDialogComponent,
+    AboutAppDialogComponent
   ],
   entryComponents: [
-    ResetPasswordDialogComponent
+    ResetPasswordDialogComponent,
+    AboutAppDialogComponent
   ],
   exports: [ ],
   providers: [ ]

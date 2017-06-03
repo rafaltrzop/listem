@@ -22,10 +22,9 @@
     </div>
   </form>
 
-  <a class="le-home__reset-password" (click)="openResetPasswordDialog()">Forgot password?</a>
+  <a routerLink="/" class="le-home__anchor" (click)="openResetPasswordDialog()">Reset password</a>
 </main>
 
-<footer class="le-footer" (click)="hideFooter()">
-  <span class="le-footer__close">&times;</span>
-  <p class="le-footer__footnote">Autorem niniejszego serwisu jest Rafał Trzop. Serwis ten stanowi integralną część pracy licencjackiej (kierunek: Elektroniczne Przetwarzanie Informacji), przygotowanej pod kierunkiem prof. dr. hab. Jerzego Koniora na Wydziale Zarządzania i Komunikacji Społecznej Uniwersytetu Jagiellońskiego.</p>
+<footer class="le-footer">
+  <a routerLink="/" class="le-footer__anchor" (click)="openAboutAppDialog()">About app</a>
 </footer>

@@ -7,6 +7,9 @@ import { AuthService, SnackBarService } from '../core';
 import {
   ResetPasswordDialogComponent
 } from './reset-password-dialog/reset-password-dialog.component';
+import {
+  AboutAppDialogComponent
+} from './about-app-dialog/about-app-dialog.component';
 
 @Component({
   selector: 'le-home',
@@ -51,9 +54,8 @@ export class HomeComponent implements OnInit {
     this.mdDialog.open(ResetPasswordDialogComponent);
   }
 
-  public hideFooter() {
-    let footer = <HTMLElement> document.querySelector('.le-footer');
-    footer.style.transform = 'translateY(100%)';
+  public openAboutAppDialog() {
+    this.mdDialog.open(AboutAppDialogComponent);
   }
 
   private configureForm() {
