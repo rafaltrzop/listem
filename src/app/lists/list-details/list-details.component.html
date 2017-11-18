@@ -36,7 +36,7 @@
 
               <span class="le-list-item__spacer"></span>
 
-              <button class="le-list-item__delete-button" (click)="deleteListItem(item.$key)">
+              <button class="le-list-item__delete-button" (click)="openDeleteListItemDialog(item.$key, item.name)">
                 <md-icon class="le-list-item__delete">close</md-icon>
               </button>
             </md-list-item>
@@ -58,7 +58,7 @@
 
               <span class="le-list-item__spacer"></span>
 
-              <button class="le-list-item__delete-button" (click)="deleteListItem(item.$key)">
+              <button class="le-list-item__delete-button" (click)="openDeleteListItemDialog(item.$key, item.name)">
                 <md-icon class="le-list-item__delete">close</md-icon>
               </button>
             </md-list-item>

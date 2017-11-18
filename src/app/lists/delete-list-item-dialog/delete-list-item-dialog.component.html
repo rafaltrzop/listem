@@ -1,0 +1,10 @@
+<form [formGroup]="deleteListItemForm" (submit)="deleteListItem()">
+  <md-dialog-content>
+    <p>Do you want to remove <strong>{{ itemName }}</strong>?</p>
+  </md-dialog-content>
+
+  <md-dialog-actions>
+    <button md-button type="submit">Remove item</button>
+    <button md-button md-dialog-close type="button">Cancel</button>
+  </md-dialog-actions>
+</form>

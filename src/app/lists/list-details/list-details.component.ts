@@ -6,6 +6,9 @@ import { AddListItemDialogComponent } from '../add-list-item-dialog/add-list-ite
 import {
   EditListItemDialogComponent
 } from '../edit-list-item-dialog/edit-list-item-dialog.component';
+import {
+  DeleteListItemDialogComponent
+} from '../delete-list-item-dialog/delete-list-item-dialog.component';
 import { ListDetailsService } from './list-details.service';
 
 @Component({
@@ -49,8 +52,14 @@ export class ListDetailsComponent implements OnInit {
     });
   }
 
-  public deleteListItem(itemId: string) {
-    this.listDetailsService.deleteListItem(this.listId, itemId);
+  public openDeleteListItemDialog(itemId: string, itemName: string) {
+    this.mdDialog.open(DeleteListItemDialogComponent, {
+      data: {
+        listId: this.listId,
+        itemId,
+        itemName
+      }
+    });
   }
 
   public checkItem(event, itemId: string) {
