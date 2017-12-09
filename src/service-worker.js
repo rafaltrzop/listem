@@ -1,4 +1,4 @@
-var CACHE_NAME = 'listem-v2';
+var CACHE_NAME = 'listem-v3';
 
 self.addEventListener('install', function(event) {
   event.waitUntil(

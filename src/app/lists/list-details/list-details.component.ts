@@ -63,14 +63,22 @@ export class ListDetailsComponent implements OnInit {
   }
 
   public checkItem(event, itemId: string) {
-    if (event.checked) {
-      this.listDetailsService.toggleItem(this.listId, itemId, true);
-    }
+    const animationDuration = 600;
+
+    setTimeout(() => {
+      if (event.checked) {
+        this.listDetailsService.toggleItem(this.listId, itemId, true);
+      }
+    }, animationDuration);
   }
 
   public uncheckItem(event, itemId: string) {
-    if (!event.checked) {
-      this.listDetailsService.toggleItem(this.listId, itemId, false);
-    }
+    const animationDuration = 400;
+
+    setTimeout(() => {
+      if (!event.checked) {
+        this.listDetailsService.toggleItem(this.listId, itemId, false);
+      }
+    }, animationDuration);
   }
 }
